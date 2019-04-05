@@ -1,21 +1,12 @@
 #include <stdio.h>
-#include <string.h>
+#include "encoding.h"
 
-void aes_encrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key);
-void aes_decrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key);
-void ecb_aes_encrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key);
-void ecb_aes_decrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key, int len);
-void AddRoundKey(unsigned char *p, unsigned char *k);
-void ByteSub(unsigned char *p, int n);
-void InvByteSub(unsigned char *p, int n);
-void ShiftRow(unsigned char p[4][4]);
-void InvShiftRow(unsigned char p[4][4]);
-void MixColumn(unsigned char *p, unsigned char *a);
-void aes_mul(unsigned char *a,unsigned char *b,unsigned char *c);
-unsigned int aes_8_bit_mul(unsigned int x, unsigned int y);
-int aes_set_key(unsigned char *key_seed, int key_size, unsigned char *roundkey);
+unsigned char *key = "0123456789ABCDEF0123456789ABCDEF";	/* 256 bits key_seed */
+unsigned char *key_end = 0;
+int key_size=256;		/* key_size can be 128, 192, or 256*/
+int keyrounds=0;		/* keyrounds can be 10, 12, 14*/
 
-int keyrounds=0;
+/* sbox and rsbox */
 static const unsigned char sbox[256] = {
   //0     1    2      3     4    5     6     7      8    9     A      B    C     D     E     F
   0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76,
@@ -53,77 +44,32 @@ static const unsigned char rsbox[256] = {
   0xa0, 0xe0, 0x3b, 0x4d, 0xae, 0x2a, 0xf5, 0xb0, 0xc8, 0xeb, 0xbb, 0x3c, 0x83, 0x53, 0x99, 0x61,
   0x17, 0x2b, 0x04, 0x7e, 0xba, 0x77, 0xd6, 0x26, 0xe1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d };
 
-void aes_encrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key)
+// SHA256 functions, not finish:
+// void SHA256(unsigned char *source, unsigned char *sha);
+// int SHA_padding(unsigned char *text);
+// void digest(unsigned char *bufin, unsigned char *hash);
+// int SHA_init(unsigned char *hash);
+
+void my_memcpy(unsigned char *des, unsigned char *src, int n)		/* cpy n bytes from src to des */
 {
-	int i,j,k;
-	unsigned char matrix[4][4];
-	unsigned char a[4]={0x02, 0x03, 0x01, 0x01};
-	int h;
-	/* copy the plaintext into the matrix(the transform of the actual one)*/
-	memcpy(matrix,plain,4*4);
-	AddRoundKey((unsigned char *)matrix,key);	/* key is array of all the round keys*/
-	for(i=1;i<=keyrounds;i++)
-	{
-		ByteSub((unsigned char *)matrix, 16);
-		ShiftRow(matrix);
-		if(i<keyrounds)
-			MixColumn((unsigned char *)matrix,a);
-		AddRoundKey((unsigned char *)matrix, key+i*16);
-	}
-	/* copy the matrix into cipher */
-	memcpy(cipher,matrix,4*4);
+	int i;
+	for(i=0;i<n;i++)
+		des[i]=src[i];
+}
+int my_strlen(unsigned char *t)		/* return the length of a string, not include '\0' */
+{
+	int len=0;
+	while(t[len]!=0)
+		len++;
+	return len;	
+}
+void my_memset(unsigned char *des, unsigned char v, int n)	/* set n bytes in des to the value v*/
+{
+	int i;
+	for(i=0;i<n;i++)
+		des[i]=v;
 }
 
-void ecb_aes_encrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key)
-{
-	int i;
-	int len;
-	unsigned char p[16],c[16];
-	len=strlen(plain)-1;
-	if(len%16!=0)
-	{
-		printf("The length needs to be dividable by 16.\n");
-		return;
-	}
-	else
-	{
-		for(i=0;i<len/16;i++)
-		{
-			memcpy(p,plain+i*16,16);
-			aes_encrypt(p,c,key);
-			memcpy(cipher+i*16,c,16);
-		}
-	}
-}
-void aes_decrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key)
-{	
-	int i,j,k;
-	unsigned char matrix[4][4];
-	unsigned char a[4]={0x0E, 0x0B, 0x0D, 0x09};
-	int h;
-	memcpy(matrix,cipher,4*4);
-	for(i=keyrounds;i>=1;i--)
-	{
-		AddRoundKey((unsigned char *)matrix, key+i*16);
-		if(i<keyrounds)
-			MixColumn((unsigned char *)matrix,a);
-		InvShiftRow(matrix);
-		InvByteSub((unsigned char *)matrix, 16);
-	}
-	AddRoundKey((unsigned char *)matrix,key);
-	memcpy(plain,matrix,4*4);
-}
-void ecb_aes_decrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key, int len)
-{
-	int i;
-	unsigned char p[16],c[16];
-	for(i=0;i<len/16;i++)
-	{
-		memcpy(c,cipher+i*16,16);
-		aes_decrypt(p,c,key);
-		memcpy(plain+i*16,p,16);
-	}
-}
 void AddRoundKey(unsigned char *p, unsigned char *k)
 {
 	int i;
@@ -133,7 +79,7 @@ void AddRoundKey(unsigned char *p, unsigned char *k)
 	}
 }
 
-void ByteSub(unsigned char *p, int n)
+void ByteSub(unsigned char *p, int n)	/* subscribe n bytes in p with sbox */
 {
 	int i;
 	unsigned char index;
@@ -144,7 +90,7 @@ void ByteSub(unsigned char *p, int n)
 	}	
 }
 
-void InvByteSub(unsigned char *p, int n)
+void InvByteSub(unsigned char *p, int n)	/* subscribe n bytes in p with rsbox*/
 {
 	int i;
 	for(i=0;i<n;i++)
@@ -157,28 +103,27 @@ void ShiftRow(unsigned char p[4][4])
 	int i;
 	unsigned char temp;
 	/*Since the matrix is in transform form, the shiftrow is actually shift column*/
-	temp=p[0][1];
+	temp=p[0][1];		
 	p[0][1]=p[1][1];
 	p[1][1]=p[2][1];
 	p[2][1]=p[3][1];
-	p[3][1]=temp;
+	p[3][1]=temp;		/* the second column, shift 1*/
 	
 	temp=p[0][2];
 	p[0][2]=p[2][2];
 	p[2][2]=temp;
 	temp=p[1][2];
 	p[1][2]=p[3][2];
-	p[3][2]=temp;
+	p[3][2]=temp;		/* the third column, shift 2*/
 	
 	temp=p[3][3];
 	p[3][3]=p[2][3];
 	p[2][3]=p[1][3];
 	p[1][3]=p[0][3];
-	p[0][3]=temp;
-
+	p[0][3]=temp;		/* the forth column, shift 3 */
 }
 
-void InvShiftRow(unsigned char p[4][4])
+void InvShiftRow(unsigned char p[4][4])		/* the inverse process for shift row */
 {
 	int i;
 	unsigned char temp;
@@ -224,19 +169,19 @@ void aes_mul(unsigned char a[4],unsigned char b[4],unsigned char c[4])
 	int i,j;
 	unsigned char x[4],y[4];
 	unsigned char temp;
-	memcpy(y,b,4);
-	memset(x,0,4);
+	my_memcpy(y,b,4);
+	my_memset(x,0,4);
 	for(i=0;i<4;i++)
 	{
 		for(j=0;j<4;j++)
-			x[i]=x[i]^(aes_8_bit_mul(y[j],a[j]));
+			x[i]=x[i]^(aes_8_bit_mul(y[j],a[j]));	/* xor is plus */
 		temp=y[3];
 		y[3]=y[2];
 		y[2]=y[1];
 		y[1]=y[0];
-		y[0]=temp;
+		y[0]=temp;	/* shift b*/
 	}
-	memcpy(c,x,4);
+	my_memcpy(c,x,4);
 }
 
 void MixColumn(unsigned char *p, unsigned char *a)
@@ -245,9 +190,9 @@ void MixColumn(unsigned char *p, unsigned char *a)
 	int i;
 	for(i=0;i<4;i++)
 	{
-		memcpy(temp,p+i*4,4);
-		aes_mul(temp,a,temp);
-		memcpy(p+i*4,temp,4);
+		my_memcpy(temp,p+i*4,4);
+		aes_mul(temp,a,temp);		/* multiply */
+		my_memcpy(p+i*4,temp,4);
 	}
 }
 
@@ -259,40 +204,40 @@ int aes_set_key(unsigned char *key_seed, int key_size, unsigned char *roundkey)
 	unsigned char temp;
 	unsigned char pk[4];
 	unsigned int p;
-	switch(key_size)
+	switch(key_size)	/* set keyrounds */
 	{
 		case 128:keyrounds=10;step=4;loop=10;break;
 		case 192:keyrounds=12;step=6;loop=8;break;
 		case 256:keyrounds=14;step=8;loop=7;break;
 		default:keyrounds=0;step=0;loop=0;return 0;break;
 	}
-	memcpy(roundkey,key_seed,key_size/8);	/* the first round key is key sed*/
+	my_memcpy(roundkey,key_seed,key_size/8);	/* the first round key is key sed*/
 	r = 1;
 	for(i=step;i<step+loop*step;i+=step)
 	{
 		p=i*4;
-		memcpy(roundkey+p,roundkey+p-4,4);	/* rk[i*4]=rk[i*4-1]*/
+		my_memcpy(roundkey+p,roundkey+p-4,4);	/* rk[i*4]=rk[i*4-1]*/
 		temp=roundkey[p];
 		roundkey[p]=roundkey[p+1];
 		roundkey[p+1]=roundkey[p+2];
 		roundkey[p+2]=roundkey[p+3];		
-		roundkey[p+3]=temp;			/* rol 1 */
+		roundkey[p+3]=temp;		/* rol 1 */
 		ByteSub(roundkey+p,4);		/* Byte Sub */
 		if(r > 0x80)
 			r = r ^ 0x11B;
-		roundkey[p] = roundkey[p] ^ r;
+		roundkey[p] = roundkey[p] ^ r;	/* xor with r */
 		r=r<<1;
-		for(j=0;j<4;j++)
+		for(j=0;j<4;j++)	/* rk[j]=rk[j-1]^rk[j-step] */
 			roundkey[p+j]=roundkey[p+j]^roundkey[p-step*4+j];
 		for(j=1;j<step;j++)
 		{
 			if((step==6 && i==step*loop && j>=step-2) ||
 			(step==8 && i==step*loop && j>=step-4))
-				break;
+				break;		/* 192 and 256 needs to skip the last two loops */
 
-			if(step==8 && j==4)
+			if(step==8 && j==4)	/* 256 needs special operation */
 			{
-				memcpy(pk,roundkey+p+3*4,4);
+				my_memcpy(pk,roundkey+p+3*4,4);	
 				ByteSub((unsigned char*)pk,4);
 				for(h=0;h<4;h++)
 					roundkey[p+4*4+h]=pk[h]^roundkey[p+4*4-step*4+h];
@@ -307,42 +252,123 @@ int aes_set_key(unsigned char *key_seed, int key_size, unsigned char *roundkey)
 	return 1;	
 }
 
-int main()
+/* encrypt plaintext, with roundkeys in key, store the result in cipher */
+void aes_encrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key)
 {
-	unsigned char key_seed[100]="0123456789ABCDEF0123456789ABCDEF";
-	unsigned char roundkey[240];	/* most: 256bit 14rounds (14+1)*16 */
-	unsigned char plaintext[100];
-	unsigned char ciphertext[100];
-	unsigned char buf[100];
-	int key_size=256;
+	int i,j,k;
+	unsigned char matrix[4][4];
+	unsigned char a[4]={0x02, 0x03, 0x01, 0x01};	/* for MixColumn*/
+	int h;
+	/* copy the plaintext into the matrix(the transform of the actual one)*/
+	my_memcpy((unsigned char *)matrix,plain,4*4);
+	AddRoundKey((unsigned char *)matrix,key);	/* key is array of all the round keys*/
+	for(i=1;i<=keyrounds;i++)
+	{
+		ByteSub((unsigned char *)matrix, 16);	/* ByteSub using sbox*/
+		ShiftRow(matrix);	/* Shift Row*/
+		if(i<keyrounds)		/* The last round do not do MixColumn */
+			MixColumn((unsigned char *)matrix,a);
+		AddRoundKey((unsigned char *)matrix, key+i*16);		/* xor */
+	}
+	/* copy the matrix into cipher */
+	my_memcpy(cipher,(unsigned char*)matrix,4*4);
+}
+
+/* aes encrypt with ecb */
+void ecb_aes_encrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key)
+{
 	int i;
 	int len;
-	int choice;
-	char ch;
-	aes_set_key(key_seed,key_size,roundkey);
-	printf("What do you want?\n1)Encrypt a message\n2)I want the key!\n");
-	scanf("%d",&choice);
-	if(choice==1)
+	unsigned char p[16],c[16];
+	len=my_strlen(plain);
+	if(len%16!=0)
 	{
-		printf("Please input the message:\n");
-		while((ch=getchar())!='\n' && ch!=EOF);
-		fgets(plaintext,100,stdin);
-		printf("The plaintext is: %s",plaintext);
-		len=strlen(plaintext)-1;
-		ecb_aes_encrypt(plaintext,ciphertext,roundkey);
-		printf("The cipher is: ");
-		for(i=0;i<16;i++)
-			printf("%02X",ciphertext[i]);
-		printf("\n");
-		//ecb_aes_decrypt(buf,ciphertext,roundkey,len);
-		//buf[len]=0;
-		//printf("%s\n",buf);
+		/* padding */
+		for(i=len;i<((len/16)+1)*16;i++)
+			plain[i]=0;
 	}
-	else
+
+	for(i=0;i<len/16;i++)
 	{
-		printf("The key is:\n");
-		for(i=0;i<32;i++)
-			printf("%02X",key_seed[i]);
+		/* encrypt each block */
+		my_memcpy(p,plain+i*16,16);
+		aes_encrypt(p,c,key);
+		my_memcpy(cipher+i*16,c,16);
+	}
+}
+
+/* decrypt function, not used */
+void aes_decrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key)
+{	
+	int i,j,k;
+	unsigned char matrix[4][4];
+	unsigned char a[4]={0x0E, 0x0B, 0x0D, 0x09};
+	int h;
+	my_memcpy((unsigned char *)matrix,cipher,4*4);
+	for(i=keyrounds;i>=1;i--)
+	{
+		AddRoundKey((unsigned char *)matrix, key+i*16);
+		if(i<keyrounds)
+			MixColumn((unsigned char *)matrix,a);
+		InvShiftRow(matrix);
+		InvByteSub((unsigned char *)matrix, 16);
+	}
+	AddRoundKey((unsigned char *)matrix,key);
+	my_memcpy(plain,(unsigned char *)matrix,4*4);
+}
+
+void ecb_aes_decrypt(unsigned char *plain, unsigned char *cipher, unsigned char *key, int len)
+{
+	int i;
+	unsigned char p[16],c[16];
+	for(i=0;i<len/16;i++)
+	{
+		/* implement aes on each block */
+		my_memcpy(c,cipher+i*16,16);
+		aes_decrypt(p,c,key);
+		my_memcpy(plain+i*16,p,16);
+	}
+}
+
+int encrypto_start(unsigned char *in, unsigned char *out)
+{
+	unsigned char roundkey[240];		/* AES256: 14rounds (14+1)*16 */
+	if(in==NULL || out==NULL)
+		return 0;
+	/* set the round keys according to the key*/
+	aes_set_key(key,key_size,roundkey);
+	/* encrypt with ecb */
+	ecb_aes_encrypt(in,out,roundkey);
+	return 1;
+}
+void encrypto_end(){}
+
+int main()
+{
+	// Set Code to Trust User Tag
+        /*int tu = 2;
+        for (long i = &my_memcpy; i < &encrypto_end; i+=8) {
+                asm volatile("stag %[x], 0(%[y])\n" :  : [x]"r"(tu), [y]"r"(i) );
+        }
+        // Set Key to Trust User Tag
+        for (long i = &key; i < &key_end; i+=8) {
+                asm volatile("stag %[x], 0(%[y])\n" :  : [x]"r"(tu), [y]"r"(i) );
+        }
+        // Set code TC enter
+        int tc = 1;
+        asm volatile("stag %[x], 0(%[y])\n" :  : [x]"r"(tc), [y]"r"(&encrypto_start) );
+
+        // Change to user mode
+        set_csr(mtstatus, TSTATUS_EN);*/
+
+        unsigned char* p = "A Quick BrownFox";
+        unsigned char c[16] = {0};
+	int result = encrypto_start(p,c);
+	// test print 
+	if(result)
+	{
+		for(int i=0;i<16;i++)
+			printf("%02X",c[i]);
 		printf("\n");
 	}
 	return 0;
