@@ -24,13 +24,13 @@
 % ================
 
 \begin{abstract}
-We propose here a performance evaluation of $\mathbf{0.15\mu m}$ GaN X-Band power amplifiers working as self-synchroneous rectifiers.
-Two single stage MMIC power amplifiers have been characterized under continuous wave conditions at $\mathbf{10.1\,GHz}$ : one designed with a single $\mathbf{10\times100\mu m}$ and another containing two $\mathbf{10\times100\mu m}$. Those MMIC exibit repectively  $\mathbf{67.87\%}$ and $\mathbf{56.47\%}$ on power added efficiency at $\mathbf{VDD=20\,V}$ in deep class-AB.
-In rectifier mode, in class-C, the same MMICs show a RF-to-DC efficiency $\mathbf{64.4\%}$ and $\mathbf{63.94\%}$. X-Band Gan HEMT transistors are then good candidates for the rectifier part of GaN subsystem including an energy recovery circuit. 
+This is a report for the class: Network Security Theory and Practice, our project is aimed to build a execution environment in RISC-V using tagged memory technology. RISC-V is an open and extensible instruction set architecture designed by UC Berkly, because of its low overhead, it's very suitable for using in the embedded devices and internet of things. As with the various system vulnerabilities recently exposed, operating systems are no longer fully trusted. More and more people choose to using the hardware security method, like Trust Zone(ARM), SGX(Intel). However, there are still no officically supported safety standards for RISC-V.
+
+Here, we design a tagged memory hardware security architecture, inspired by the paper[1]. Tagged memory has been proposed as a fine-grained security mechanism to support protection of data flow, pointers or capabilities for a long time, but none of the existing schemes provide efficient and flexible at the same time, it is still a open problem. We using tag-aware instruction and a simple kernel to achieve a fine-grained isolation. We also provide a series of tools for easy to use, a gcc and objdump supported tag-aware instructions. And we finish our logical design in Spike, a RISC-V simulator.
 \end{abstract}
 
 \begin{keywords}
-MMIC, power amplifiers, Gallium Nitride, Rectifier.
+RISC-V, tagged memory, tag-aware instruction set architecture.
 \end{keywords}
 
 
@@ -39,16 +39,15 @@ MMIC, power amplifiers, Gallium Nitride, Rectifier.
 % ========================
 
 \section{Introduction}
+IoT devices are rapidly entering everyday life. However, these devices have a great risk to be attacked since the code of these devices are complex thus potential to have bugs. To ensure the security of the applications running on these devices even when the devices are compromised, a kind of skill called Trusted Execution Environment(TEE) can be of great help. The main idea of TEE is to use isolated execution to protect trusted applications from compromised operating systems or other untrusted software on the same device.
 
-Microwave rectifiers, elementary devices for rectena, are essentials for wireless powering \cite{Popovic2013}. Mainly designed with diodes, rectifiers may take advantages to be GaN HEMTs based to create MMICs subsystems, handling high power density and including both power amplifiers (PA) and rectifiers such as DC-DC converters \cite{Garcia2012,Garcia2013} or outphasing amplifiers including an energy recovering loop \cite{Langridge1999,Godoy2009,Xu2013a}.
+Recent years have witnessed many implementations of TEE on different systems. ARM TrustZone and Intel SGX are two widely applied TEE architectures. ARM TrustZone divides the computer resources into a secure and non-secure world on hardware level.\cite{TrustZone} The secure world can access all system resources while the non-secure world can only access data in the non-secure world or call secure applications through designed secure entry points. With TrustZone architecture, if sensitive data and code are hidden in the secure world, they cannot be accessed by untrusted applications or system. However, TrustZone needs a secure kernel to manage the secure world, providing secure system services, thus enlarge the trusted computing base(TCB), which increases the risk. Intel SGX uses an isolated container called enclave which hold sensitive part of applications.\cite{SGX} Unlike TrustZone, SGX does not need any privileged supervisor like a trusted kernel, thus reduces TCB. But SGX needs complex instructions to manage enclaves.
 
-A microwave transistor, when load impedances are well matched, can exhibit, at S-band, similar efficiency either as a power amplifier or a rectifier \cite{Roberg2012} thanks to its time-reversal duality property \cite{Reveyrand2012}. 
+Resource-constrained devices like IoT devices often have little memory, thus needs fine-grained memory management. The isolation boundary the existing implementations of TEE provides are not fine-grained enough for small IoT devices to apply.\cite{TIMBERV} Inspired by the work in \cite{TIMBERV}, we use a technique called \emph{tagged memory} to provide flexible isolation for low-end devices. The main method of tagged memory technique is to associate memory blocks with additional metadata called tag, used for access control and other memory management. There have been active new research on tagged memory, such as use this technique help data flow tracking.\cite{HDFI}. However current tagged memory scheme are not efficient enough on small IoT devices\cite{TIMBERV}, which is the aim of our work.
 
-In this paper, two X-Band GaN MMIC power amplifiers, originally dedicated to Envelope Tracking applications \cite{Schafer2013}, are investigated for rectifying purposes.
+This work is based on the instruction set architecture RISC-V.\cite{RISCV} RISC-V is suitable for development on IoT devices due to its simple instruction architecture. Also it is open and support instruction extension. On the other hand, the scheme which uses tagged memory technique to implement TEE hasn't been supported on RISC-V. These are the reasons why we choose to implement our work on RISC-V. RISC-V defines three different privilege mode: machine-mode(M), supervisor-mode(S) and user-mode(U). M-mode can access all the system resources and are meant for emulating the machine, while S-mode and U-mode are respectively used by operate systems and user applications.
 
-First, PAs are characterized in large signal, at $10.1\,GHz$ and $VDD=20\,V$ in order to evaluate their DC-to-RF efficiency (Power Added Efficency). 
-
-Then, they are measured as self-synchrouneous rectifiers: the RF signal is injected to drain RF port. The output is then the drain DC port, loaded with an optimal resistor. The gate DC port voltage forces the rectifier bias point in a efficient class-C. Finally, the best efficiency is obtained when the gate RF port is loaded with an optimal passive impedance. Thoses circuits do not need any RF injection on the gate to improve their efficiency thanks to a non negligible gate-drain capacitance ($C_{gd}$) in the intrinsic GaN HEMT nonlinear model at RF frequencies. Transistors generate RF power at the gate port where a passive matching can be loaded in order to optimize the rectifier efficiency. 
+In this work, we present SUNFLOWER, a RISC-V based TEE implementation with tagged memory applied. This is a hardware-software co-design work. In the hardware level, we add instructions that can load and store data with tag check to the RISC-V simulator spike. In the software level, we provide a secure interface for applications to call and set part of their code or data with trusted tag. We associate each memory word with 2 bits tag, thus achieve fine-grained isolation with low overhead. We estimate our work on a simple encryption program and prove it can work as expected. 
 
 
 % ====================
@@ -61,7 +60,7 @@ The MMICs were fabricated in a $0.15\mu m$ gate length process. The PAs have bee
 Fig. \ref{picture} shows the X-Band power amplifiers charaterized in both amplifier and rectifier modes in this paper:
 \begin{itemize}
 \item Circuit-A (Fig. \ref{picture}a) is a $10\times100\mu m$ single transistor amplifier ;
-\item Circuit-B (Fig. \ref{picture}b) is a single stage amplifier that combines two $10\times100\mu m$ transistors with a reactive combiner. 
+\item Circuit-B (Fig. \ref{picture}b) is a single stage amplifier that combines two $10\times100\mu m$ transistors with a reactive combiner.
 \end{itemize}
 
 \begin{figure}[ht!] %!t
@@ -77,7 +76,7 @@ Fig. \ref{picture} shows the X-Band power amplifiers charaterized in both amplif
 % ==========================
 
 \section{Measurement Setup}
-The measurement setup is based on the SWAP X-402 \cite{Verspecht2010,Roblin2011}. This 4 channels time-domain receiver, working like a LSNA \cite{Verspecht2005} thanks to bi-directional couplers, acquires absolutes incident and reflected waves at DUT's inputs and output ports. Thanks to a relative SOLT and a power calibration, the setup provides time domain RF waveforms for voltages and currents at the calibration reference planes. The SWAP enables measurements in a $30$ GHz RF bandwidth : only the fundamental and the second harmonic were measured. Nevertheless, this paper focus only on the fundamental RF frequency.   
+The measurement setup is based on the SWAP X-402 \cite{Verspecht2010,Roblin2011}. This 4 channels time-domain receiver, working like a LSNA \cite{Verspecht2005} thanks to bi-directional couplers, acquires absolutes incident and reflected waves at DUT's inputs and output ports. Thanks to a relative SOLT and a power calibration, the setup provides time domain RF waveforms for voltages and currents at the calibration reference planes. The SWAP enables measurements in a $30$ GHz RF bandwidth : only the fundamental and the second harmonic were measured. Nevertheless, this paper focus only on the fundamental RF frequency.
 
 During power amplifier measurements, the RF signal is injected at the input of the DUT (gate's port). The DC-to-RF efficiency is calculated according the the output power, the input power and the bias consumption in term of Power Added Efficiency ($\eta_{PA}$) or Drain Efficiency ($\eta_{DE}$) such as :
 \begin{eqnarray}
@@ -108,7 +107,7 @@ Power amplifiers have been measured in a coaxial test-fixture. The error-boxes o
 
 % ================== Circuit A ==================
 \subsection{Circuit-A: one $10\times100\mu m$}
-Circuit-A, working as an amplifier, loaded with $50\,\Omega$ and measured at $f_0=10.1\,GHz$, exibits, as shown in Fig. \ref{mike_amp}, its best efficiency $\eta_{PA}=67.87\%$ and $\eta_{DE}=78.36\%$ with $P_{in}=26.42\,dBm$ and  $P_{out}=35.16\,dBm$. The best bias point for efficiency is VGG=-4.0V and VDD=20V. The design is optimized for a bias point close to class-B.  
+Circuit-A, working as an amplifier, loaded with $50\,\Omega$ and measured at $f_0=10.1\,GHz$, exibits, as shown in Fig. \ref{mike_amp}, its best efficiency $\eta_{PA}=67.87\%$ and $\eta_{DE}=78.36\%$ with $P_{in}=26.42\,dBm$ and  $P_{out}=35.16\,dBm$. The best bias point for efficiency is VGG=-4.0V and VDD=20V. The design is optimized for a bias point close to class-B.
 
 \begin{figure}[ht!] %!t
 \centering
@@ -146,20 +145,20 @@ After optimization of $Z_{load}$, $RD$ and $VGG$ on circuit-A, the best rectifyi
 \label{mike_rect}
 \end{figure}
 
-\begin{table}[ht] 
-\caption{Impact on rectifier efficiency and drain RF impedance} %title of the table 
-\centering 
-\begin{tabular}{|c| c | c |  } 
-\hline 
- &Efficiency & RF drain impedance\\ 
-\hline 
-$Z_{load}$ & High & Medium\\  
-$RDD$ & Low & High\\   
-$VGG$ & Medium & Low\\  
-\hline  
-\end{tabular} 
-\label{tab:var} 
-\end{table} 
+\begin{table}[ht]
+\caption{Impact on rectifier efficiency and drain RF impedance} %title of the table
+\centering
+\begin{tabular}{|c| c | c |  }
+\hline
+ &Efficiency & RF drain impedance\\
+\hline
+$Z_{load}$ & High & Medium\\
+$RDD$ & Low & High\\
+$VGG$ & Medium & Low\\
+\hline
+\end{tabular}
+\label{tab:var}
+\end{table}
 
 
 % ================== Circuit B ==================
@@ -167,12 +166,12 @@ $VGG$ & Medium & Low\\
 \subsection{Circuit-B: two $10\times100\mu m$}
 Circuit-B has been characterized in the same manner than circuit-A for both amplifier and rectifier modes.
 Regarding the amplifier measurements, with a $50\,\Omega$ load, at $10.1\,GHz$, circuit B exhibits the best efficiency $\eta_{PA}=56.47\%$ and $\eta_{DE}=65.75\%$ with $P_{in}=26\,dBm$ and  $P_{out}=35\,dBm$. The bias point is VGG=-3.4V and VDD=20V.
-The design of the amplifier is optimized for deep class-AB.  
+The design of the amplifier is optimized for deep class-AB.
 
 \begin{figure}[ht!] %!t
 \centering
 \includegraphics[width=2.5in]{IMS2014_Scott_Amplifier.pdf}
-\caption{ Circuit-B as an amplifier:  PAE $\eta_{PA}$ (black dashed line), Output RF power (light blue) and DC drain current (dark blue) versus input RF power. The best efficiency is $\eta_{PA}=56.47\%$ at $P_{in}=26\,dBm$ (red dashed line) with $VGG=-3.4\,V$, $VDD=20\,V$. 
+\caption{ Circuit-B as an amplifier:  PAE $\eta_{PA}$ (black dashed line), Output RF power (light blue) and DC drain current (dark blue) versus input RF power. The best efficiency is $\eta_{PA}=56.47\%$ at $P_{in}=26\,dBm$ (red dashed line) with $VGG=-3.4\,V$, $VDD=20\,V$.
  }
 \label{scott_amp}
 \end{figure}
@@ -188,23 +187,23 @@ Rectifier measurements were performed on circuit-B. After an optimization on the
 \end{figure}
 
 Finally, table \ref{tab:hresult} summaries performances of the two X-Band GaN MMICs for both amplifier and rectifier operation modes. In the case of amplifier mode, $\eta_{PA}$ is the displayed \textit{efficiency}. The \textit{RF power} is the power located at the drain RF port.
-By presenting good efficiency even at X-Band, this work highlights the possibility to use HEMT GaN for designing a rectifying element. Therefore, there is a need for nonlinear models working both for amplification and rectification. Intrinsic nonlinear capacitances, for example, may  be extracted from first and third quadrants. 
+By presenting good efficiency even at X-Band, this work highlights the possibility to use HEMT GaN for designing a rectifying element. Therefore, there is a need for nonlinear models working both for amplification and rectification. Intrinsic nonlinear capacitances, for example, may  be extracted from first and third quadrants.
 
-\begin{table}[ht] 
-\caption{Performances as amplifier and rectifier at 10.1 GHz} %title of the table 
-\centering % centering table 
-\begin{tabular}{c| rr | rr  } % creating eight columns 
-\hline\hline %inserting double-line 
- &\multicolumn{2}{c}{Amplifier} & \multicolumn{2}{c}{Rectifier}\\  
-Circuit &A&B&A&B\\ [0.25ex] 
-\hline   
-Max Efficiency(\%) & 67.87 & 56.47 & 64.40 & 63.94 \\  
-DC Power (mW) & 4186 & 5112 & 1671 & 3182\\ 
- RF Power (mW) & 3281 & 3362 & 2594 & 4976\\  
-\hline\hline  
-\end{tabular} 
-\label{tab:hresult} 
-\end{table} 
+\begin{table}[ht]
+\caption{Performances as amplifier and rectifier at 10.1 GHz} %title of the table
+\centering % centering table
+\begin{tabular}{c| rr | rr  } % creating eight columns
+\hline\hline %inserting double-line
+ &\multicolumn{2}{c}{Amplifier} & \multicolumn{2}{c}{Rectifier}\\
+Circuit &A&B&A&B\\ [0.25ex]
+\hline
+Max Efficiency(\%) & 67.87 & 56.47 & 64.40 & 63.94 \\
+DC Power (mW) & 4186 & 5112 & 1671 & 3182\\
+ RF Power (mW) & 3281 & 3362 & 2594 & 4976\\
+\hline\hline
+\end{tabular}
+\label{tab:hresult}
+\end{table}
 
 
 % ==================
@@ -219,13 +218,34 @@ This work shows measured results on two X-Band GaN MMIC ($0.15\,\mu m$ process).
 % ==================
 % use section* for acknowledgment
 %\section*{Acknowledgment}
-%For the Summary paper submission only, no %acknowledgements are allowed. 
+%For the Summary paper submission only, no %acknowledgements are allowed.
 
 
 % ==============
 % # REFERENCES #
 % ==============
-\bibliographystyle{IEEEtran}
-\bibliography{IEEEabrv,biblio_rectifier}
+\begin{thebibliography}{1}
+
+\bibitem{TrustZone} 
+\emph{ARM Security Technology: Building a Secure System using TrustZone Technology}, 2009. Ref. no. PRD29-GENC-009492C.
+
+\bibitem{SGX}F. McKeen, I. Alexandrovich, A. Berenzon, C. V. Rozas, H. Shafi, V. Shanbhogue, and U. R. Savagaonkar.
+\emph{Innovative instructions and software model for isolated execution. In Hardware and Architectural
+Support for Security and Privacy ¨C HASP, ACM, page 10}, 2013. 
+
+\bibitem{TIMBERV}S. Weiser, M. Werner, F. Brasser, M. Malenko, S. Mangard and A. Sadeghi.
+\emph{TIMBER-V: Tag-Isolated Memory Bringing Fine-grained Enclaves to RISC-V},
+Proc. NDSS, 2019.
+
+\bibitem{HDFI}C. Song, H. Moon, M. Alam, I. Yun, B. Lee, T. Kim, W. Lee, and Y. Paek. 
+\emph{HDFI: Hardware-Assisted Data-Flow Isolation},
+In Security and Privacy 16, pages 1¨C17. IEEE Computer Society, 2016.
+
+\bibitem{RISCV}A. Waterman and K. Asanovic. 
+\emph{The risc-v instruction set manual,
+volume i: User-level isa, version 2.2. Technical report, SiFive Inc},
+EECS Department, University of California, Berkeley, 2017.
+
+\end{thebibliography}
 
 \end{document}
