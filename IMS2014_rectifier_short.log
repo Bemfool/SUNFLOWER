@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  28 MAR 2019 20:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  15 APR 2019 13:59
 entering extended mode
 **./IMS2014_rectifier_short.tex
 (IMS2014_rectifier_short.tex
@@ -271,153 +271,84 @@ G,.JBIG2,.JB2,.eps]
 ead.
 ** ATTENTION: \authorblockN is deprecated (line 19). Use \IEEEauthorblockN inst
 ead.
-
-Underfull \hbox (badness 1831) in paragraph at lines 26--30
-[]$ \OT1/ptm/b/n/9 GaN X-Band power am-pli-fiers work-ing as self-
- []
-
 ** ATTENTION: \keywords is deprecated (line 32). Use \IEEEkeywords instead.
-
-LaTeX Warning: Citation `Popovic2013' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Citation `Garcia2012' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Citation `Garcia2013' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Citation `Langridge1999' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Citation `Godoy2009' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Citation `Xu2013a' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Citation `Roberg2012' on page 1 undefined on input line 45.
-
-
-LaTeX Warning: Citation `Reveyrand2012' on page 1 undefined on input line 45.
-
-
-LaTeX Warning: Citation `Schafer2013' on page 1 undefined on input line 47.
-
-
-LaTeX Warning: Reference `picture' on page 1 undefined on input line 61.
-
-
-LaTeX Warning: Reference `picture' on page 1 undefined on input line 63.
-
-
-LaTeX Warning: Reference `picture' on page 1 undefined on input line 64.
-
 <IMS2014_Pictures_PA.png, id=1, 821.0675pt x 286.06876pt>
 File: IMS2014_Pictures_PA.png Graphic file (type png)
 <use IMS2014_Pictures_PA.png>
-Package pdftex.def Info: IMS2014_Pictures_PA.png  used on input line 69.
+Package pdftex.def Info: IMS2014_Pictures_PA.png  used on input line 68.
 (pdftex.def)             Requested size: 249.33127pt x 86.8689pt.
 
-LaTeX Warning: Citation `Verspecht2010' on page 1 undefined on input line 80.
+LaTeX Warning: Citation `Verspecht2010' on page 1 undefined on input line 79.
 
 
-LaTeX Warning: Citation `Roblin2011' on page 1 undefined on input line 80.
+LaTeX Warning: Citation `Roblin2011' on page 1 undefined on input line 79.
 
 
-LaTeX Warning: Citation `Verspecht2005' on page 1 undefined on input line 80.
-
-<IMS2014_bench.pdf, id=3, 1399.2275pt x 432.61626pt>
-File: IMS2014_bench.pdf Graphic file (type pdf)
-<use IMS2014_bench.pdf>
-Package pdftex.def Info: IMS2014_bench.pdf  used on input line 90.
-(pdftex.def)             Requested size: 245.71754pt x 75.96642pt.
-
-LaTeX Warning: Reference `bench' on page 1 undefined on input line 95.
+LaTeX Warning: Citation `Verspecht2005' on page 1 undefined on input line 79.
 
 [1{C:/Users/89293/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
- <./IMS2014_Pictures_PA.png>]
-
-LaTeX Warning: Reference `picture' on page 2 undefined on input line 100.
-
-
-LaTeX Warning: Reference `mike_amp' on page 2 undefined on input line 111.
-
-<IMS2014_Mike_Amplifier.pdf, id=26, 507.8975pt x 240.9pt>
+]
+<IMS2014_bench.pdf, id=15, 1399.2275pt x 432.61626pt>
+File: IMS2014_bench.pdf Graphic file (type pdf)
+<use IMS2014_bench.pdf>
+Package pdftex.def Info: IMS2014_bench.pdf  used on input line 89.
+(pdftex.def)             Requested size: 245.71754pt x 75.96642pt.
+<IMS2014_Mike_Amplifier.pdf, id=16, 507.8975pt x 240.9pt>
 File: IMS2014_Mike_Amplifier.pdf Graphic file (type pdf)
 <use IMS2014_Mike_Amplifier.pdf>
-Package pdftex.def Info: IMS2014_Mike_Amplifier.pdf  used on input line 115.
+Package pdftex.def Info: IMS2014_Mike_Amplifier.pdf  used on input line 114.
 (pdftex.def)             Requested size: 180.67499pt x 85.69469pt.
 
-LaTeX Warning: Reference `bench' on page 2 undefined on input line 120.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
 
-LaTeX Warning: Citation `Reveyrand2012' on page 2 undefined on input line 123.
+LaTeX Warning: Citation `Reveyrand2012' on page 2 undefined on input line 122.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
-
-LaTeX Warning: Reference `mike_rect_mVGG' on page 2 undefined on input line 125
-.
-
-<IMS2014_Mike_Rectifier_mVGG.pdf, id=27, 730.73pt x 277.035pt>
+<IMS2014_Mike_Rectifier_mVGG.pdf, id=17, 730.73pt x 277.035pt>
 File: IMS2014_Mike_Rectifier_mVGG.pdf Graphic file (type pdf)
 <use IMS2014_Mike_Rectifier_mVGG.pdf>
 Package pdftex.def Info: IMS2014_Mike_Rectifier_mVGG.pdf  used on input line 12
-9.
+8.
 (pdftex.def)             Requested size: 245.71754pt x 93.15498pt.
-
-LaTeX Warning: Reference `tab:var' on page 2 undefined on input line 137.
-
-
-LaTeX Warning: Reference `mike_rect' on page 2 undefined on input line 139.
-
-<IMS2014_Mike_Rectifier.pdf, id=28, 763.85374pt x 276.03125pt>
+[2 <./IMS2014_Pictures_PA.png> <./IMS2014_bench.pdf> <./IMS2014_Mike_Amplifier.
+pdf>]
+<IMS2014_Mike_Rectifier.pdf, id=54, 763.85374pt x 276.03125pt>
 File: IMS2014_Mike_Rectifier.pdf Graphic file (type pdf)
 <use IMS2014_Mike_Rectifier.pdf>
-Package pdftex.def Info: IMS2014_Mike_Rectifier.pdf  used on input line 143.
+Package pdftex.def Info: IMS2014_Mike_Rectifier.pdf  used on input line 142.
 (pdftex.def)             Requested size: 245.71754pt x 88.7909pt.
-[2 <./IMS2014_bench.pdf> <./IMS2014_Mike_Amplifier.pdf> <./IMS2014_Mike_Rectifi
-er_mVGG.pdf
-
-pdfTeX warning: pdflatex.exe (file ./IMS2014_Mike_Rectifier_mVGG.pdf): PDF incl
-usion: multiple pdfs with page group included in a single page
-> <./IMS2014_Mike_Rectifier.pdf
+<IMS2014_Scott_Amplifier.pdf, id=55, 505.89pt x 248.93pt>
+File: IMS2014_Scott_Amplifier.pdf Graphic file (type pdf)
+<use IMS2014_Scott_Amplifier.pdf>
+Package pdftex.def Info: IMS2014_Scott_Amplifier.pdf  used on input line 173.
+(pdftex.def)             Requested size: 180.67499pt x 88.90443pt.
+<IMS2014_Scott_Rectifier.pdf, id=56, 763.85374pt x 276.03125pt>
+File: IMS2014_Scott_Rectifier.pdf Graphic file (type pdf)
+<use IMS2014_Scott_Rectifier.pdf>
+Package pdftex.def Info: IMS2014_Scott_Rectifier.pdf  used on input line 183.
+(pdftex.def)             Requested size: 245.71754pt x 88.7909pt.
+ [3 <./IMS2014_Mike_Rectifier_mVGG.pdf> <./IMS2014_Mike_Rectifier.pdf
 
 pdfTeX warning: pdflatex.exe (file ./IMS2014_Mike_Rectifier.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
+> <./IMS2014_Scott_Amplifier.pdf
+
+pdfTeX warning: pdflatex.exe (file ./IMS2014_Scott_Amplifier.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./IMS2014_Scott_Rectifier.pdf
+
+pdfTeX warning: pdflatex.exe (file ./IMS2014_Scott_Rectifier.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
 >]
-<IMS2014_Scott_Amplifier.pdf, id=138, 505.89pt x 248.93pt>
-File: IMS2014_Scott_Amplifier.pdf Graphic file (type pdf)
-<use IMS2014_Scott_Amplifier.pdf>
-Package pdftex.def Info: IMS2014_Scott_Amplifier.pdf  used on input line 174.
-(pdftex.def)             Requested size: 180.67499pt x 88.90443pt.
-
-
-LaTeX Warning: Reference `bench' on page 3 undefined on input line 180.
-
-
-LaTeX Warning: Reference `scott_rect' on page 3 undefined on input line 180.
-
-<IMS2014_Scott_Rectifier.pdf, id=139, 763.85374pt x 276.03125pt>
-File: IMS2014_Scott_Rectifier.pdf Graphic file (type pdf)
-<use IMS2014_Scott_Rectifier.pdf>
-Package pdftex.def Info: IMS2014_Scott_Rectifier.pdf  used on input line 184.
-(pdftex.def)             Requested size: 245.71754pt x 88.7909pt.
-
-LaTeX Warning: Reference `tab:hresult' on page 3 undefined on input line 190.
-
-No file IMS2014_rectifier_short.bbl.
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -429,43 +360,36 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3 <./IMS2014_Scott_Amplifier.pdf> <./IMS2014_Scott_Rectifier.pdf
+[4
 
-pdfTeX warning: pdflatex.exe (file ./IMS2014_Scott_Rectifier.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
->] (IMS2014_rectifier_short.aux)
+] (IMS2014_rectifier_short.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 2952 strings out of 492945
- 43619 string characters out of 3143481
- 120166 words of memory out of 3000000
- 6797 multiletter control sequences out of 15000+200000
- 41558 words of font info for 85 fonts, out of 3000000 for 9000
+ 2937 strings out of 492945
+ 43470 string characters out of 3143481
+ 120254 words of memory out of 3000000
+ 6792 multiletter control sequences out of 15000+200000
+ 39701 words of font info for 76 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
- 41i,9n,25p,788b,285s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,9n,25p,1080b,285s stack positions out of 5000i,500n,10000p,200000b,50000s
 {E:/MikTex/fonts/enc/dvips/base/8r.enc}<E:/MikTex/fonts/type1/public/amsfonts
-/cm/cmbx9.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/MikTex/f
-onts/type1/public/amsfonts/cm/cmmi12.pfb><E:/MikTex/fonts/type1/public/amsfonts
-/cm/cmmi6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi7.pfb><E:/MikTex/fo
-nts/type1/public/amsfonts/cm/cmmi8.pfb><E:/MikTex/fonts/type1/public/amsfonts/c
-m/cmmi9.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTex/font
-s/type1/public/amsfonts/cm/cmr17.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/
-cmr6.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr7.pfb><E:/MikTex/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr9.
-pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/MikTex/fonts/type1
-/public/amsfonts/cm/cmsy7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy8.p
-fb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy9.pfb><E:/MikTex/fonts/type1/u
-rw/times/utmb8a.pfb><E:/MikTex/fonts/type1/urw/times/utmbi8a.pfb><E:/MikTex/fon
-ts/type1/urw/times/utmr8a.pfb><E:/MikTex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on IMS2014_rectifier_short.pdf (3 pages, 1155147 bytes).
+/cm/cmmi10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi12.pfb><E:/MikTex/
+fonts/type1/public/amsfonts/cm/cmmi6.pfb><E:/MikTex/fonts/type1/public/amsfonts
+/cm/cmmi7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi8.pfb><E:/MikTex/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTex/fonts/type1/public/amsfonts/c
+m/cmr17.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTex/fonts
+/type1/public/amsfonts/cm/cmr7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cm
+r8.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/MikTex/fonts/ty
+pe1/public/amsfonts/cm/cmsy7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb><E:/MikTex/fonts/type1/urw/times/utmb8a.pfb><E:/MikTex/fonts/type1/urw/ti
+mes/utmbi8a.pfb><E:/MikTex/fonts/type1/urw/times/utmr8a.pfb><E:/MikTex/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on IMS2014_rectifier_short.pdf (4 pages, 1128172 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
+ 244 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
