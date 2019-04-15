@@ -17,7 +17,7 @@
 %+++++++++++++++++++++++++++++++++++++++++++++++++++
 
 \maketitle
-
+\setlength{\parskip}{0.4\baselineskip}
 
 % ================
 % # Abstract     #
@@ -30,7 +30,7 @@ Here, we design a tagged memory hardware security architecture, inspired by the 
 \end{abstract}
 
 \begin{keywords}
-RISC-V, tagged memory, tag-aware instruction set architecture.
+RISC-V, tagged memory, tag-aware instruction set architecture.\\
 \end{keywords}
 
 
@@ -49,7 +49,67 @@ This work is based on the instruction set architecture RISC-V.\cite{RISCV} RISC-
 
 In this work, we present SUNFLOWER, a RISC-V based TEE implementation with tagged memory applied. This is a hardware-software co-design work. In the hardware level, we add instructions that can load and store data with tag check to the RISC-V simulator spike. In the software level, we provide a secure interface for applications to call and set part of their code or data with trusted tag. We associate each memory word with 2 bits tag, thus achieve fine-grained isolation with low overhead. We estimate our work on a simple encryption program and prove it can work as expected. 
 
+This report will introduce our design frame and details of hardware and software design, followed by evaluation and analysis of our work.
 
+
+% ====================
+% # II. MMIC designs #
+% ====================
+
+\section{SUNFLOWER Design Frame}
+This work is a hardware and software co-design. The hardware design is based on a RISC-V simulator called spike, while the software part is designed on Amazon FreeRTOS embedded system. To support the tagged memory in our work, a tag-aware instruction set is designed as an extension to the original RV64ISA of RISC-V. This instruction set includes instructions to visit memory unit with tags, helping our system realize access control to memory with different tags. The instruction decoder and MMU are also modified according to the structure of this newly designed instruction set. On the system layer, we design and implement a set of system services, which are run in high privilege mode and perform services like tag update.
+
+
+% ==========================
+% # III. Design Details #
+% ==========================
+
+\section{Design Details}
+In this section, we will introduce our hardware-software co-design system in detail. Hardware design includes different tags and tag-aware instruction sets, as well as the modification on the datapath and decoder of CPU. % software %
+
+\subsection{Hardware Design}
+To implement tagged memory aided trusted execution environment, the basic part is to modify the hardware so that it can support tagged memory. We design a 2-bit tag system and a tag-aware instruction set to visit memory with tags. Based on the new instructions, we extend the original CPU to support them. 
+
+\subsubsection{Tag System Design}
+Memory tags in SUNFLOWER system each has 2 bits, resulting in 4 different types of tags, which are N-tag, TU-tag, TS-tag and TC-tag. N-tag is for memory in normal world. TU-tag is for code and data in user mode trusted enclaves, while TS-tag is in supervisor mode trusted enclaves. TC-tag is for entry point from normal state to trusted state. It is designed just for instructions, not for data, which is different from the others. 
+
+\subsubsection{Tag-aware Instructions}
+We extend the original RISC-V instruction architecture with a set of tag-aware instructions to support tagged memory operations. The newly designed instructions are based on I/S type instructions and can perform access control for load and store operations according to the destination memory tag. 
+
+The original load instructions are extended to be load check tag instructions(LCT). LCT instructions can compare the tag of the destination memory unit with the expected tag specified in the instruction, check if this load request is legal, and raise exception if it abuses the tag isolation policy. The high 12 bits of the original I-type instructions is immediate operator, used as address offset. We use the highest 2 bits to store the expected tag.
+
+Similarly, the original store instructions are extended to be store check tag instructions(SCT). SCT instructions work the same as LCT instructions, store to destination memory unit if the memory tag and the expected tag match and raise exception if they don't. The immediate fields in S-type instructions consists of the high 7 bits and 8-12 4bits, used for offset in addressing. The highest 2 bits are used to store tags. 
+
+This design that takes 2 bits from the original immediate fields will affect the addressing space size. The original addressing space is from -4096 to 4096
+% inst structure figure %
+
+\subsection{Basic Execution Environment Theoretical Concept}
+
+Since RISC-V program could not run by itself, applications ,based on RISC-V, need kernel support to work.  For instance, the RISC-V Proxy Kernel, pk, is a lightweight application execution environment that can host statically-linked RISC-V ELF binaries. It is designed to support tethered RISC-V implementations with limited I/O capability and thus handles I/O-related system called by proxying them to a host computer. Tethered System, as its name, refers to those system that cannot stand alone, which means that they may not have complete facilities and depend on a host system to boot. Speaking of boot, pk goes with the Berkely Boot Loader, denoted as bbl. It is the supervisor part of this execution environment and need to handle basic booting work, like initialization.
+
+To be more detailed, RISC-V Proxy Kernel implement a communication between RISC-V Target running proxy kernel and x86 Host running frontend server. The bridge between them is called Host-Target Interface (HTIF), which corresponds to riscv-fesvr project.
+
+At first, many experimentations related our final goal were done by using pk. Then, based on these theoretical concepts learned from pk, our project determines to build applications on FreeRTOS, which is a open source real-time operating system kernel for embedded devices. What is more, it has been ported to RISC-V micro-controller platform. 
+
+\subsection{Custom Functions Supported by FreeRTOS Port}
+
+As said before, FreeRTOS could support RISC-V perfectly and detailed implementation is contained in its portable files, to be more specifically, mostly in port.c.  
+
+In this port, it is most significant that we rewrite and complete its syscall trap to support our design. What is noteworthy is that trap in FreeRTOS is generalized trap, which simulates both hardware and software interruption. In this trap, we need to handle a mode-change request, which transfer current mode to machine mode. This design is on the purpose of enclave service management, which need to be dealt with in machine mode. Detailed process is written in assembly language by modifying mstatus register to change current mode.
+
+\subsection{Enclave Implementation Details}
+
+Process in FreeRTOS  is called task, which is quite important concept of this operating system. As we all know, in Linux we sometimes call it task, too, like task\_struct. Just like task\_struct, every task in FreeRTOS need a xTaskParameter to initialize, which include information about detailed function to run, its name, stack allocation and so on. Besides this, every task, seen as an individual application, also need another parameter, denoted as xEnclaveRegions, to mark where belongs to enclave, and an function address list, denoted as xTaskEntryPoints, to mark where secure functions begin.
+
+After introducing our resources to be prepared, it is time to figure out our basic idea of enclave implementation. Our aim is to put all memory, which need to be tagged and belongs to these task, together during linking stage. Then if our memory is continuous, it would be much convenient to set tag and do other management. To achieve this purpose, divide memory four part, normal data, normal function, secure data and secure function and denote them using different marks, like NORMAL\_DATA, NORMAL\_FUNCTION, SECURE\_DATA and SECURE\_FUNCTION. These marks correspond to their \_\_attribute\_\_, consist of name, mode, type and position, which could determine a section in memory. Positions are set as ATTR\_MIDDLE firstly and will be explained later.
+
+Position is the most ingenious trick in the method. Create four pointers to mark where normal and secure regions start and end. They have not been initialized, as they are just symbols without any exact meaning now. Then set their positions to ATTR\_START and ATTR\_END. So far, all functions and data are sectioned into chucks of memory.  Hence, in linking stage, pack text and data up, and sort them by using position. In order to do that, we define ATTR\_START as 'a', which is the beginning of alphabet, ATTR\_END as 'z', the ending, and ATTR\_MIDDLE 'b' or other letter in the middle pf 'a' and 'z'. Then the sort could be just implement by linker script using SORT\_BY\_NAME.
+
+Finally, get each part's address at load-time because linker cannot know symbol at link time. In the other words, we do this in task initialization. Until now, we could set enclave and tag uniformly by using our encapsulated API, which would be described in more detailed later.
+
+\subsection{Enclave Service API Encapsulation}
+
+Our trusted supervisor provides FreeRTOS a series of API to manipulate enclaves. Every enclave has a structure, denoted as TTCB, to keep information, like region address, magic number for security and so on. In these operating system services, we use mutex lock to maintain mutual exclusiveness of TTCB and tag demanding memory by using checked load and store instructions, which also are encapsulated.
 
 \section{Demo Design}
 We design a demo program to show our design works. Boot loader runs in machine mode, first load our tag service, then is the FreeRTOS kernel. When everything is ready, switch to user mode to run our test program. Part of the memory is allocated for the trusted environment, then TU is marked for this part, and TC is marked for the first instruction as the entry. Then the program and relevant data are loaded, and the trusted program can be called after initialization. When program finished, we will release this part and re-mark the N mark.[images]

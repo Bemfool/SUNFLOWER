@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "encoding.h"
 
 unsigned char *key = "0123456789ABCDEF0123456789ABCDEF";	/* 256 bits key_seed */
 unsigned char *key_end = 0;
@@ -360,14 +359,15 @@ int main()
 
         // Change to user mode
         set_csr(mtstatus, TSTATUS_EN);*/
-
-        unsigned char* p = "A Quick BrownFox";
-        unsigned char c[16] = {0};
+	
+    unsigned char* p = "A Quick BrownFox";
+    unsigned char c[16] = {0};
 	int result = encrypto_start(p,c);
 	// test print 
 	if(result)
 	{
-		for(int i=0;i<16;i++)
+		int i=0; 
+		for(i=0;i<16;i++)
 			printf("%02X",c[i]);
 		printf("\n");
 	}

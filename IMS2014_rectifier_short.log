@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  15 APR 2019 20:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  15 APR 2019 21:31
 entering extended mode
-**./IMS2014_rectifier_short.tex
-(IMS2014_rectifier_short.tex
+**"C:/Users/Keith Lin/Desktop/SUNFLOWER/IMS2014_rectifier_short.tex"
+("C:/Users/Keith Lin/Desktop/SUNFLOWER/IMS2014_rectifier_short.tex"
 LaTeX2e <2018-12-01>
 (IEEEtran.cls
 Document Class: IEEEtran 2012/12/27 V1.8 by Michael Shell
@@ -14,7 +14,7 @@ Document Class: IEEEtran 2012/12/27 V1.8 by Michael Shell
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 368.
 
-(E:\MikTex\tex/latex/psnfss\ot1ptm.fd
+(D:\Software\miktex\miktex\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
@@ -88,48 +88,48 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \@IEEEtmpitemindent=\dimen116
 \c@IEEEbiography=\count92
 \@IEEEtranrubishbin=\box27
-) (E:\MikTex\tex/latex/graphics\graphicx.sty
+) (D:\Software\miktex\miktex\tex/latex/graphics\graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(E:\MikTex\tex/latex/graphics\keyval.sty
+(D:\Software\miktex\miktex\tex/latex/graphics\keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-(E:\MikTex\tex/latex/graphics\graphics.sty
+(D:\Software\miktex\miktex\tex/latex/graphics\graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(E:\MikTex\tex/latex/graphics\trig.sty
+(D:\Software\miktex\miktex\tex/latex/graphics\trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(E:\MikTex\tex/latex/graphics-cfg\graphics.cfg
+(D:\Software\miktex\miktex\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(E:\MikTex\tex/latex/graphics-def\pdftex.def
+(D:\Software\miktex\miktex\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen117
 \Gin@req@width=\dimen118
 )
-(E:\MikTex\tex/latex/amsmath\amsmath.sty
+(D:\Software\miktex\miktex\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2018/12/01 v2.17b AMS math features
 \@mathmargin=\skip44
 
 For additional information on amsmath, use the `?' option.
-(E:\MikTex\tex/latex/amsmath\amstext.sty
+(D:\Software\miktex\miktex\tex/latex/amsmath\amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(E:\MikTex\tex/latex/amsmath\amsgen.sty
+(D:\Software\miktex\miktex\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen119
 ))
-(E:\MikTex\tex/latex/amsmath\amsbsy.sty
+(D:\Software\miktex\miktex\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen120
 )
-(E:\MikTex\tex/latex/amsmath\amsopn.sty
+(D:\Software\miktex\miktex\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count93
@@ -170,11 +170,12 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
-(E:\MikTex\tex/latex/eqparbox\eqparbox.sty
+(D:\Software\miktex\miktex\tex/latex/eqparbox\eqparbox.sty
 Package: eqparbox 2017/09/03 v4.1 Create equal-widthed boxes
 \eqp@tempdima=\skip47
 \eqp@tempdimb=\skip48
- (E:\MikTex\tex/latex/tools\array.sty
+
+(D:\Software\miktex\miktex\tex/latex/tools\array.sty
 Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 \col@sep=\dimen128
 \ar@mcellbox=\box30
@@ -187,12 +188,14 @@ Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 \eqp@tabular@box=\box32
 \eqp@list@box=\box33
 \eqp@list@indent=\skip51
- (E:\MikTex\tex/latex/environ\environ.sty
+
+(D:\Software\miktex\miktex\tex/latex/environ\environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
 
-(E:\MikTex\tex/latex/trimspaces\trimspaces.sty
+(D:\Software\miktex\miktex\tex/latex/trimspaces\trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))) (IMS2014_rectifier_short.aux)
+)))
+(IMS2014_rectifier_short.aux)
 \openout1 = `IMS2014_rectifier_short.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
@@ -207,7 +210,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
-(E:\MikTex\tex/context/base/mkii\supp-pdf.mkii
+
+(D:\Software\miktex\miktex\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count105
 \scratchdimen=\dimen130
@@ -220,39 +224,39 @@ LaTeX Font Info:    ... okay on input line 11.
 \MPnumerator=\count109
 \makeMPintoPDFobject=\count110
 \everyMPtoPDFconversion=\toks23
-) (E:\MikTex\tex/latex/oberdiek\epstopdf-base.sty
+) (D:\Software\miktex\miktex\tex/latex/oberdiek\epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(E:\MikTex\tex/generic/oberdiek\infwarerr.sty
+(D:\Software\miktex\miktex\tex/generic/oberdiek\infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-(E:\MikTex\tex/latex/oberdiek\grfext.sty
+(D:\Software\miktex\miktex\tex/latex/oberdiek\grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-(E:\MikTex\tex/generic/oberdiek\kvdefinekeys.sty
+(D:\Software\miktex\miktex\tex/generic/oberdiek\kvdefinekeys.sty
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 
-(E:\MikTex\tex/generic/oberdiek\ltxcmds.sty
+(D:\Software\miktex\miktex\tex/generic/oberdiek\ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )))
-(E:\MikTex\tex/latex/oberdiek\kvoptions.sty
+(D:\Software\miktex\miktex\tex/latex/oberdiek\kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-(E:\MikTex\tex/generic/oberdiek\kvsetkeys.sty
+(D:\Software\miktex\miktex\tex/generic/oberdiek\kvsetkeys.sty
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-(E:\MikTex\tex/generic/oberdiek\etexcmds.sty
+(D:\Software\miktex\miktex\tex/generic/oberdiek\etexcmds.sty
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-(E:\MikTex\tex/generic/oberdiek\ifluatex.sty
+(D:\Software\miktex\miktex\tex/generic/oberdiek\ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 ))))
-(E:\MikTex\tex/generic/oberdiek\pdftexcmds.sty
+(D:\Software\miktex\miktex\tex/generic/oberdiek\pdftexcmds.sty
 Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(E:\MikTex\tex/generic/oberdiek\ifpdf.sty
+(D:\Software\miktex\miktex\tex/generic/oberdiek\ifpdf.sty
 Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
@@ -272,82 +276,87 @@ ead.
 ** ATTENTION: \authorblockN is deprecated (line 19). Use \IEEEauthorblockN inst
 ead.
 ** ATTENTION: \keywords is deprecated (line 32). Use \IEEEkeywords instead.
-[1{C:/Users/89293/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1{C:/Users/Keith Lin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
-]
-<IMS2014_Pictures_PA.png, id=9, 821.0675pt x 286.06876pt>
+] [2]
+<IMS2014_Pictures_PA.png, id=12, 821.0675pt x 286.06876pt>
 File: IMS2014_Pictures_PA.png Graphic file (type png)
 <use IMS2014_Pictures_PA.png>
-Package pdftex.def Info: IMS2014_Pictures_PA.png  used on input line 78.
+Package pdftex.def Info: IMS2014_Pictures_PA.png  used on input line 138.
 (pdftex.def)             Requested size: 249.33127pt x 86.8689pt.
 
 
-LaTeX Warning: Citation `Verspecht2010' on page 2 undefined on input line 89.
+LaTeX Warning: Citation `Verspecht2010' on page 3 undefined on input line 149.
 
 
-LaTeX Warning: Citation `Roblin2011' on page 2 undefined on input line 89.
+LaTeX Warning: Citation `Roblin2011' on page 3 undefined on input line 149.
 
 
-LaTeX Warning: Citation `Verspecht2005' on page 2 undefined on input line 89.
+LaTeX Warning: Citation `Verspecht2005' on page 3 undefined on input line 149.
 
-<IMS2014_bench.pdf, id=11, 1399.2275pt x 432.61626pt>
+[3 <./IMS2014_Pictures_PA.png>]
+<IMS2014_bench.pdf, id=26, 1399.2275pt x 432.61626pt>
 File: IMS2014_bench.pdf Graphic file (type pdf)
 <use IMS2014_bench.pdf>
-Package pdftex.def Info: IMS2014_bench.pdf  used on input line 99.
+Package pdftex.def Info: IMS2014_bench.pdf  used on input line 159.
 (pdftex.def)             Requested size: 245.71754pt x 75.96642pt.
-<IMS2014_Mike_Amplifier.pdf, id=12, 507.8975pt x 240.9pt>
+<IMS2014_Mike_Amplifier.pdf, id=27, 507.8975pt x 240.9pt>
 File: IMS2014_Mike_Amplifier.pdf Graphic file (type pdf)
 <use IMS2014_Mike_Amplifier.pdf>
-Package pdftex.def Info: IMS2014_Mike_Amplifier.pdf  used on input line 124.
+Package pdftex.def Info: IMS2014_Mike_Amplifier.pdf  used on input line 184.
 (pdftex.def)             Requested size: 180.67499pt x 85.69469pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
 
  []
 
 
-LaTeX Warning: Citation `Reveyrand2012' on page 2 undefined on input line 132.
+LaTeX Warning: Citation `Reveyrand2012' on page 4 undefined on input line 192.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
 
  []
 
-[2 <./IMS2014_Pictures_PA.png> <./IMS2014_bench.pdf>]
-<IMS2014_Mike_Rectifier_mVGG.pdf, id=38, 730.73pt x 277.035pt>
+<IMS2014_Mike_Rectifier_mVGG.pdf, id=28, 730.73pt x 277.035pt>
 File: IMS2014_Mike_Rectifier_mVGG.pdf Graphic file (type pdf)
 <use IMS2014_Mike_Rectifier_mVGG.pdf>
-Package pdftex.def Info: IMS2014_Mike_Rectifier_mVGG.pdf  used on input line 13
+Package pdftex.def Info: IMS2014_Mike_Rectifier_mVGG.pdf  used on input line 19
 8.
 (pdftex.def)             Requested size: 245.71754pt x 93.15498pt.
-<IMS2014_Mike_Rectifier.pdf, id=39, 763.85374pt x 276.03125pt>
+[4 <./IMS2014_bench.pdf> <./IMS2014_Mike_Amplifier.pdf> <./IMS2014_Mike_Rectifi
+er_mVGG.pdf
+
+pdfTeX warning: pdflatex (file ./IMS2014_Mike_Rectifier_mVGG.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>]
+<IMS2014_Mike_Rectifier.pdf, id=100, 763.85374pt x 276.03125pt>
 File: IMS2014_Mike_Rectifier.pdf Graphic file (type pdf)
 <use IMS2014_Mike_Rectifier.pdf>
-Package pdftex.def Info: IMS2014_Mike_Rectifier.pdf  used on input line 152.
+Package pdftex.def Info: IMS2014_Mike_Rectifier.pdf  used on input line 212.
 (pdftex.def)             Requested size: 245.71754pt x 88.7909pt.
-<IMS2014_Scott_Amplifier.pdf, id=40, 505.89pt x 248.93pt>
+<IMS2014_Scott_Amplifier.pdf, id=101, 505.89pt x 248.93pt>
 File: IMS2014_Scott_Amplifier.pdf Graphic file (type pdf)
 <use IMS2014_Scott_Amplifier.pdf>
-Package pdftex.def Info: IMS2014_Scott_Amplifier.pdf  used on input line 183.
+Package pdftex.def Info: IMS2014_Scott_Amplifier.pdf  used on input line 243.
 (pdftex.def)             Requested size: 180.67499pt x 88.90443pt.
-<IMS2014_Scott_Rectifier.pdf, id=41, 763.85374pt x 276.03125pt>
+<IMS2014_Scott_Rectifier.pdf, id=102, 763.85374pt x 276.03125pt>
 File: IMS2014_Scott_Rectifier.pdf Graphic file (type pdf)
 <use IMS2014_Scott_Rectifier.pdf>
-Package pdftex.def Info: IMS2014_Scott_Rectifier.pdf  used on input line 193.
+Package pdftex.def Info: IMS2014_Scott_Rectifier.pdf  used on input line 253.
 (pdftex.def)             Requested size: 245.71754pt x 88.7909pt.
- [3 <./IMS2014_Mike_Amplifier.pdf> <./IMS2014_Mike_Rectifier_mVGG.pdf
+ [5 <./IMS2014_Mike_Rectifier.pdf> <./IMS2014_Scott_Amplifier.pdf
 
-pdfTeX warning: pdflatex.exe (file ./IMS2014_Mike_Rectifier_mVGG.pdf): PDF incl
-usion: multiple pdfs with page group included in a single page
-> <./IMS2014_Mike_Rectifier.pdf
+pdfTeX warning: pdflatex (file ./IMS2014_Scott_Amplifier.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+> <./IMS2014_Scott_Rectifier.pdf
 
-pdfTeX warning: pdflatex.exe (file ./IMS2014_Mike_Rectifier.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./IMS2014_Scott_Amplifier.pdf
-
-pdfTeX warning: pdflatex.exe (file ./IMS2014_Scott_Amplifier.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./IMS2014_Scott_Rectifier.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
 >]
 
 ** Conference Paper **
@@ -360,36 +369,39 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4
+[6
 
- <./IMS2014_Scott_Rectifier.pdf>] (IMS2014_rectifier_short.aux)
+] (IMS2014_rectifier_short.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2938 strings out of 492945
- 43488 string characters out of 3143481
- 122254 words of memory out of 3000000
+ 2940 strings out of 492945
+ 44668 string characters out of 3136411
+ 120254 words of memory out of 3000000
  6793 multiletter control sequences out of 15000+200000
  39701 words of font info for 76 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
- 41i,9n,25p,1080b,285s stack positions out of 5000i,500n,10000p,200000b,50000s
-{E:/MikTex/fonts/enc/dvips/base/8r.enc}<E:/MikTex/fonts/type1/public/amsfonts
-/cm/cmmi10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi12.pfb><E:/MikTex/
-fonts/type1/public/amsfonts/cm/cmmi6.pfb><E:/MikTex/fonts/type1/public/amsfonts
-/cm/cmmi7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi8.pfb><E:/MikTex/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTex/fonts/type1/public/amsfonts/c
-m/cmr17.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTex/fonts
-/type1/public/amsfonts/cm/cmr7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cm
-r8.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/MikTex/fonts/ty
-pe1/public/amsfonts/cm/cmsy7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy
-8.pfb><E:/MikTex/fonts/type1/urw/times/utmb8a.pfb><E:/MikTex/fonts/type1/urw/ti
-mes/utmbi8a.pfb><E:/MikTex/fonts/type1/urw/times/utmr8a.pfb><E:/MikTex/fonts/ty
-pe1/urw/times/utmri8a.pfb>
-Output written on IMS2014_rectifier_short.pdf (4 pages, 1129418 bytes).
+ 41i,9n,25p,1117b,285s stack positions out of 5000i,500n,10000p,200000b,50000s
+{D:/Software/miktex/miktex/fonts/enc/dvips/base/8r.enc}<D:/Software/miktex/mi
+ktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Software/miktex/miktex/fonts
+/type1/public/amsfonts/cm/cmmi12.pfb><D:/Software/miktex/miktex/fonts/type1/pub
+lic/amsfonts/cm/cmmi6.pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfont
+s/cm/cmmi7.pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Sof
+tware/miktex/miktex/fonts/type1/public/amsfonts/cm/cmr17.pfb><D:/Software/mikte
+x/miktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Software/miktex/miktex/fon
+ts/type1/public/amsfonts/cm/cmr7.pfb><D:/Software/miktex/miktex/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmsy7.
+pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Sof
+tware/miktex/miktex/fonts/type1/urw/times/utmb8a.pfb><D:/Software/miktex/miktex
+/fonts/type1/urw/times/utmbi8a.pfb><D:/Software/miktex/miktex/fonts/type1/urw/t
+imes/utmr8a.pfb><D:/Software/miktex/miktex/fonts/type1/urw/times/utmri8a.pfb>
+Output written on IMS2014_rectifier_short.pdf (6 pages, 1137670 bytes).
 PDF statistics:
- 245 PDF objects out of 1000 (max. 8388607)
+ 251 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
