@@ -57,7 +57,7 @@ This report will introduce our design frame and details of hardware and software
 % ====================
 
 \section{SUNFLOWER Design Frame}
-This work is a hardware and software co-design. The hardware design is based on a RISC-V simulator called spike, while the software part is designed on Amazon FreeRTOS embedded system. To support the tagged memory in our work, a tag-aware instruction set is designed as an extension to the original RV64ISA of RISC-V. This instruction set includes instructions to visit memory unit with tags, helping our system realize access control to memory with different tags. The instruction decoder and MMU are also modified according to the structure of this newly designed instruction set. On the system layer, we design and implement a set of system services, which are run in high privilege mode and perform services like tag update.
+This work is a hardware and software co-design. The hardware design is based on a RISC-V simulator called spike, while the software part is designed on Amazon FreeRTOS embedded system. To support the tagged memory in our work, a tag-aware instruction set is designed as an extension to the original RV64 ISA of RISC-V. This instruction set includes instructions to visit memory unit with tags, helping our system realize access control to memory with different tags. The instruction decoder and MMU are also modified according to the structure of this newly designed instruction set. On the system layer, we design and implement a set of system services, which are run in high privilege mode and perform services like tag update.
 
 
 % ==========================
@@ -81,9 +81,25 @@ The original load instructions are extended to be load check tag instructions(LC
 Similarly, the original store instructions are extended to be store check tag instructions(SCT). SCT instructions work the same as LCT instructions, store to destination memory unit if the memory tag and the expected tag match and raise exception if they don't. The immediate fields in S-type instructions consists of the high 7 bits and 8-12 4bits, used for offset in addressing. The highest 2 bits are used to store tags. 
 
 This design that takes 2 bits from the original immediate fields will affect the addressing space size. The original addressing space is from -4096 to 4096
+
 % inst structure figure %
 
-\subsection{Basic Execution Environment Theoretical Concept}
+\subsubsection{Datapath and Decoder Modification}
+To support the newly designed tag-aware instructions, the CPU also needs to be modified. The decoder is extended to extract the etag from LCT instructions and the etag and ntag from SCT instructions. Besides, the immediate field is changed so the original signed extension part cannot run correctly. We add a new signed extension module to correctly extract address offset from new instructions.
+
+\subsubsection{CPU State Extension}
+A new exception state is added to CPU to handle illegal memory operation related with tag policy. When the expected tag in the instruction and the destination memory tag don't match, CPU enters this exception state and raise a trap. This exception state makes sure the tag isolation policy is not abused and protect the trusted data from illegal access and change. 
+
+\subsubsection{Tag Policy}
+This section will explain the tag policy in SUNFLOWER, including the isolation policy and the update policy. For codes in N-domains, they can read, write data with N-tag and execute code with N-tag, as well as code with TC-tag to enter trusted mode. But codes in N-domains is not allowed to access code or data with TU-tag or TS-tag. For codes in TU-mode, they can read, write data with TU-tag and N-tag. They can execute instructions with TU-tag and TC-tag, and will leave trusted mode when executing codes with N-tag. The codes in TS-mode has access to all the resources. As for the tag update policy, the tags can only be updated under modes with higher or the same security level with itself, i.e. N-tag can be updated in N-domain, TU-mode and TS-mode, while TS-tag can be updated in TU-mode, TS-mode but not in N-domains. Specially, TC-tag can only be updated in TS-mode, to ensure security transform from normal domains to trusted modes. 
+
+% add a table? %
+
+\subsection{Operating System Design}
+
+So stupid.
+
+\subsubsection{Basic Execution Environment Theoretical Concept}
 
 Since RISC-V program could not run by itself, applications ,based on RISC-V, need kernel support to work.  For instance, the RISC-V Proxy Kernel, pk, is a lightweight application execution environment that can host statically-linked RISC-V ELF binaries. It is designed to support tethered RISC-V implementations with limited I/O capability and thus handles I/O-related system called by proxying them to a host computer. Tethered System, as its name, refers to those system that cannot stand alone, which means that they may not have complete facilities and depend on a host system to boot. Speaking of boot, pk goes with the Berkely Boot Loader, denoted as bbl. It is the supervisor part of this execution environment and need to handle basic booting work, like initialization.
 
@@ -91,13 +107,13 @@ To be more detailed, RISC-V Proxy Kernel implement a communication between RISC-
 
 At first, many experimentations related our final goal were done by using pk. Then, based on these theoretical concepts learned from pk, our project determines to build applications on FreeRTOS, which is a open source real-time operating system kernel for embedded devices. What is more, it has been ported to RISC-V micro-controller platform. 
 
-\subsection{Custom Functions Supported by FreeRTOS Port}
+\subsubsection{Custom Functions Supported by FreeRTOS Port}
 
 As said before, FreeRTOS could support RISC-V perfectly and detailed implementation is contained in its portable files, to be more specifically, mostly in port.c.  
 
 In this port, it is most significant that we rewrite and complete its syscall trap to support our design. What is noteworthy is that trap in FreeRTOS is generalized trap, which simulates both hardware and software interruption. In this trap, we need to handle a mode-change request, which transfer current mode to machine mode. This design is on the purpose of enclave service management, which need to be dealt with in machine mode. Detailed process is written in assembly language by modifying mstatus register to change current mode.
 
-\subsection{Enclave Implementation Details}
+\subsubsection{Enclave Implementation Details}
 
 Process in FreeRTOS  is called task, which is quite important concept of this operating system. As we all know, in Linux we sometimes call it task, too, like task\_struct. Just like task\_struct, every task in FreeRTOS need a xTaskParameter to initialize, which include information about detailed function to run, its name, stack allocation and so on. Besides this, every task, seen as an individual application, also need another parameter, denoted as xEnclaveRegions, to mark where belongs to enclave, and an function address list, denoted as xTaskEntryPoints, to mark where secure functions begin.
 
@@ -107,7 +123,7 @@ Position is the most ingenious trick in the method. Create four pointers to mark
 
 Finally, get each part's address at load-time because linker cannot know symbol at link time. In the other words, we do this in task initialization. Until now, we could set enclave and tag uniformly by using our encapsulated API, which would be described in more detailed later.
 
-\subsection{Enclave Service API Encapsulation}
+\subsubsection{Enclave Service API Encapsulation}
 
 Our trusted supervisor provides FreeRTOS a series of API to manipulate enclaves. Every enclave has a structure, denoted as TTCB, to keep information, like region address, magic number for security and so on. In these operating system services, we use mutex lock to maintain mutual exclusiveness of TTCB and tag demanding memory by using checked load and store instructions, which also are encapsulated.
 
