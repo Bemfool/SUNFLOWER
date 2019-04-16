@@ -33,7 +33,6 @@ Here, we design a tagged memory hardware security architecture, inspired by the 
 RISC-V, tagged memory, tag-aware instruction set architecture.\\
 \end{keywords}
 
-
 % ========================
 % # I. Introduction      #
 % ========================
@@ -95,9 +94,9 @@ This section will explain the tag policy in SUNFLOWER, including the isolation p
 
 % add a table? %
 
-\subsection{Operating System Design}
+\subsection{Operating System Related Design}
 
-So stupid.
+From first RISC-V Proxy Kernel used for noob experiments, our project finnaly determines to use FreeRTOS to build our applications. Based on concept of task, we encapsulate some certain enclave API functions and labels for users, who could simply invoke these achievements without knowing what is working underneath. 
 
 \subsubsection{Basic Execution Environment Theoretical Concept}
 
