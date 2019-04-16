@@ -64,13 +64,13 @@ This work is a hardware and software co-design. The hardware design is based on 
 % ==========================
 
 \section{Design Details}
-In this section, we will introduce our hardware-software co-design system in detail. Hardware design includes different tags and tag-aware instruction sets, as well as the modification on the datapath and decoder of CPU. % software %
+In this section, we will introduce our hardware-software co-design system in detail. Ingeneral hardware design includes the implementation of different tags and tag-aware instruction sets, as well as the modification on the datapath and decoder of CPU, while the software part is more close to encapsulate these operating system calls and memory management. 
 
 \subsection{Hardware Design}
-To implement tagged memory aided trusted execution environment, the basic part is to modify the hardware so that it can support tagged memory. We design a 2-bit tag system and a tag-aware instruction set to visit memory with tags. Based on the new instructions, we extend the original CPU to support them. 
+To implement tagged memory aided trusted execution environment, the most basic part is to modify the hardware so that it can support tagged memory. We design a 2-bit tag system and a tag-aware instruction set to visit memory with tags. In order to satisfy new instructions, which we need to do load and store with tag check, we extend the original CPU and to support them. 
 
 \subsubsection{Tag System Design}
-Memory tags in SUNFLOWER system each has 2 bits, resulting in 4 different types of tags, which are N-tag, TU-tag, TS-tag and TC-tag. N-tag is for memory in normal world. TU-tag is for code and data in user mode trusted enclaves, while TS-tag is in supervisor mode trusted enclaves. TC-tag is for entry point from normal state to trusted state. It is designed just for instructions, not for data, which is different from the others. 
+Memory tags in SUNFLOWER system each has 2 bits, resulting in 4 different types of tags, which are N-tag, TU-tag, TS-tag and TC-tag, respectively representing normal word, trusted user . N-tag is for memory in normal world. TU-tag is for code and data in user mode trusted enclaves, while TS-tag is in supervisor mode trusted enclaves. TC-tag is for entry point from normal state to trusted state. It is designed just for instructions, not for data, which is different from the others. 
 
 \subsubsection{Tag-aware Instructions}
 We extend the original RISC-V instruction architecture with a set of tag-aware instructions to support tagged memory operations. The newly designed instructions are based on I/S type instructions and can perform access control for load and store operations according to the destination memory tag. 
