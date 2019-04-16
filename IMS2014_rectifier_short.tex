@@ -73,7 +73,7 @@ To implement tagged memory aided trusted execution environment, the most basic p
 Memory tags in SUNFLOWER system each has 2 bits, resulting in 4 different types of tags, which are N-tag, TU-tag, TS-tag and TC-tag, respectively representing normal mode, trusted user mode, trusted supervisor mode and trusted entry. To be more specific, N-tag is for memory in normal world(not trusted), namely the opposite side of secure world(trusted); TU-tag is for code, namely text, and data in user-mode trusted enclaves, while TS-tag is in supervisor-mode trusted enclaves. TC-tag is for entry point from normal state to trusted state. The design of TC-tag is not redundant since we are supposed to mark where the trusted text begins and defense that kind of attack, which jumps into enclave from other unsafe places. It is designed just for instructions, not for data, which is different from the others. And for data, we use TU-tag to mark it belongs to secure world and TC-tag in the beginning is not needed.
 
 \subsubsection{Tag-aware Instructions}
-We extend the original RISC-V instruction architecture with a set of tag-aware instructions to support tagged memory operations. The newly designed instructions are based on I/S type instructions and can perform access control for load and store operations according to the destination memory tag. Basically, we just view these as a profession version of load and store instruction, which could check and restore memory tag. In addition, the architecture has different granularities of these instructions, such as byte, word and double word, and unsigned courterpart.
+We extend the original RISC-V instruction architecture with a set of tag-aware instructions to support tagged memory operations. The newly designed instructions are based on I/S type instructions and can perform access control for load and store operations according to the destination memory tag, shown in Figure \ref{fig:LSCT}. Basically, we just view these as a profession version of load and store instruction, which could check and restore memory tag. In addition, the architecture has different granularities of these instructions, such as byte, word and double word, and unsigned courterpart.
 
 The original load instructions are extended to be load check tag instructions(LCT). LCT instructions can compare the tag of the destination memory unit with the expected tag specified in the instruction, check if this load request is legal, and raise exception if it abuses the tag isolation policy. The high 12 bits of the original I-type instructions is immediate operator, used as address offset. We use the highest 2 bits to store the expected tag, denoetd as etag. For different granularities, there are lbct, lhct, lwct, ldct for signed size and lbuct, lhuct, lwuct for unsgined ones.
 
@@ -83,7 +83,11 @@ This design that takes 2 bits from the original immediate fields will affect the
 
 Above checked load or store instructions are defined through RISC-V port. Luckily, RISC-V allows users to make custome instructions and leave four empty slots to insert. And our checked instructions occupies custom 0 and 1.
 
-% inst structure figure %
+\begin{figure}
+	\includegraphics[width=\columnwidth]{LSCT.eps}
+	\caption{We extend the original RISC-V instruction architecture with a set of tag-aware instructions to support tagged memory operations. The newly designed instructions are based on I/S type instructions and can perform access control for load and store operations according to the destination memory tag.(a) LCT instructions machine code; (b) SCT instruction machine code.}
+	\label{fig:LSCT}
+\end{figure}
 
 \subsubsection{Datapath and Decoder Modification}
 To support the newly designed tag-aware instructions, the CPU also needs to be modified. The decoder is extended to extract the etag from LCT instructions and the etag and ntag from SCT instructions. Besides, the immediate field is changed so the original signed extension part cannot run correctly. We add a new signed extension module to correctly extract address offset from new instructions.
