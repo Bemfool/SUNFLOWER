@@ -12,7 +12,7 @@
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++
 \title{\LARGE SUNFLOWER: A Trust Execution Environment on RISCV \\Based on Tagged Memory}
-\author{\authorblockN{Xu Jinyan 316010**** Duan Yuxuan 316010**** Lin Yizhu 316010****} }
+\author{\authorblockN{Xu Jinyan 316010**** Duan Yuxuan 316010**** Lin Yizhu 3160104229} }
 % \authorblockA{\authorrefmark{1}Leave Affiliation List blank for your Summary (initial) submission}}
 %+++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -24,7 +24,7 @@
 % ================
 
 \begin{abstract}
-This is a report for the class: Network Security Theory and Practice, our project is aimed to build a execution environment in RISC-V using tagged memory technology. RISC-V is an open and extensible instruction set architecture designed by UC Berkly, because of its low overhead, it's very suitable for using in the embedded devices and internet of things. As with the various system vulnerabilities recently exposed, operating systems are no longer fully trusted. More and more people choose to using the hardware security method, like Trust Zone(ARM), SGX(Intel). However, there are still no officically supported safety standards for RISC-V.
+This is a report for the class: Network Security Theory and Practice, our project is aimed to build a execution environment in RISC-V using tagged memory technology. RISC-V is an open and extensible instruction set architecture designed by UC Berkly, because of its low overhead, it's very suitable for using in the embedded devices and Internet of things. As with the various system vulnerabilities recently exposed, operating systems are no longer fully trusted. More and more people choose to using the hardware security method, like Trust Zone(ARM), SGX(Intel). However, there are still no officially supported safety standards for RISC-V.
 
 Here, we design a tagged memory hardware security architecture, inspired by the paper[1]. Tagged memory has been proposed as a fine-grained security mechanism to support protection of data flow, pointers or capabilities for a long time, but none of the existing schemes provide efficient and flexible at the same time, it is still a open problem. We using tag-aware instruction and a simple kernel to achieve a fine-grained isolation. We also provide a series of tools for easy to use, a gcc and objdump supported tag-aware instructions. And we finish our logical design in Spike, a RISC-V simulator.
 \end{abstract}
@@ -64,7 +64,7 @@ This work is a hardware and software co-design. The hardware design is based on 
 % ==========================
 
 \section{Design Details}
-In this section, we will introduce our hardware-software co-design system in detail. Ingeneral hardware design includes the implementation of different tags and tag-aware instruction sets, as well as the modification on the datapath and decoder of CPU, while the software part is more close to encapsulate these operating system calls and memory management. 
+In this section, we will introduce our hardware-software co-design system in detail. In general hardware design includes the implementation of different tags and tag-aware instruction sets, as well as the modification on the datapath and decoder of CPU, while the software part is more close to encapsulate these operating system calls and memory management. 
 
 \subsection{Hardware Design}
 To implement tagged memory aided trusted execution environment, the most basic part is to modify the hardware so that it can support tagged memory. We design a 2-bit tag system and a tag-aware instruction set to visit memory with tags. In order to satisfy new instructions, which we need to do load and store with tag check, we extend the original CPU and other hardware basis to support them. 
@@ -73,15 +73,15 @@ To implement tagged memory aided trusted execution environment, the most basic p
 Memory tags in SUNFLOWER system each has 2 bits, resulting in 4 different types of tags, which are N-tag, TU-tag, TS-tag and TC-tag, respectively representing normal mode, trusted user mode, trusted supervisor mode and trusted entry. To be more specific, N-tag is for memory in normal world(not trusted), namely the opposite side of secure world(trusted); TU-tag is for code, namely text, and data in user-mode trusted enclaves, while TS-tag is in supervisor-mode trusted enclaves. TC-tag is for entry point from normal state to trusted state. The design of TC-tag is not redundant since we are supposed to mark where the trusted text begins and defense that kind of attack, which jumps into enclave from other unsafe places. It is designed just for instructions, not for data, which is different from the others. And for data, we use TU-tag to mark it belongs to secure world and TC-tag in the beginning is not needed.
 
 \subsubsection{Tag-aware Instructions}
-We extend the original RISC-V instruction architecture with a set of tag-aware instructions to support tagged memory operations. The newly designed instructions are based on I/S type instructions and can perform access control for load and store operations according to the destination memory tag, shown in Figure \ref{fig:LSCT}. Basically, we just view these as a profession version of load and store instruction, which could check and restore memory tag. In addition, the architecture has different granularities of these instructions, such as byte, word and double word, and unsigned courterpart.
+We extend the original RISC-V instruction architecture with a set of tag-aware instructions to support tagged memory operations. The newly designed instructions are based on I/S type instructions and can perform access control for load and store operations according to the destination memory tag, shown in Figure \ref{fig:LSCT}. Basically, we just view these as a profession version of load and store instruction, which could check and restore memory tag. In addition, the architecture has different granularities of these instructions, such as byte, word and double word, and unsigned counterpart.
 
-The original load instructions are extended to be load check tag instructions(LCT). LCT instructions can compare the tag of the destination memory unit with the expected tag specified in the instruction, check if this load request is legal, and raise exception if it abuses the tag isolation policy. The high 12 bits of the original I-type instructions is immediate operator, used as address offset. We use the highest 2 bits to store the expected tag, denoetd as etag. For different granularities, there are lbct, lhct, lwct, ldct for signed size and lbuct, lhuct, lwuct for unsgined ones.
+The original load instructions are extended to be load check tag instructions(LCT). LCT instructions can compare the tag of the destination memory unit with the expected tag specified in the instruction, check if this load request is legal, and raise exception if it abuses the tag isolation policy. The high 12 bits of the original I-type instructions is immediate operator, used as address offset. We use the highest 2 bits to store the expected tag, denoted as etag. For different granularities, there are lbct, lhct, lwct, ldct for signed size and lbuct, lhuct, lwuct for unsigned ones.
 
-Similarly, the original store instructions are extended to be store check tag instructions(SCT). SCT instructions work the same as LCT instructions, store to destination memory unit if the memory tag and the expected tag match and raise exception if they don't. Besides store instructions also need another 2-bit tag for replacing current memory's tag, denoted as ntag. The immediate fields in S-type instructions consists of the high 7 bits and 8-12 4bits, used for offset in addressing. The highest 2 bits are used to store tags. The same as LCT, there are sbct, shct, swct and sdct, but not unsigned type.
+Similarly, the original store instructions are extended to be store check tag instructions(SCT). SCT instructions work the same as LCT instructions, store to destination memory unit if the memory tag and the expected tag match and raise exception if they don't. Besides store instructions also need another 2-bit tag for replacing current memory's tag, denoted as ntag. The immediate fields in S-type instructions consists of the high 7 bits and 8-12 4 bits, used for offset in addressing. The highest 2 bits are used to store tags. The same as LCT, there are sbct, shct, swct and sdct, but not unsigned type.
 
 This design that takes 2 bits from the original immediate fields will affect the addressing space size. The original addressing space is from -4096 to 4096. Hence we use script to transform indirect addressing with a much closer base address. For example, we could not reach 4096 by just using check instructions. But we could replace it with adding its base address with 4096 then set offset 0. From another angle, the range is much wider.
 
-Above checked load or store instructions are defined through RISC-V port. Luckily, RISC-V allows users to make custome instructions and leave four empty slots to insert. And our checked instructions occupies custom 0 and 1.
+Above checked load or store instructions are defined through RISC-V port. Luckily, RISC-V allows users to make custom instructions and leave four empty slots to insert. And our checked instructions occupies custom 0 and 1.
 
 \begin{figure}
 	\includegraphics[width=\columnwidth]{LSCT.eps}
@@ -102,13 +102,13 @@ This section will explain the tag policy in SUNFLOWER, including the isolation p
 
 \subsection{Operating System Related Design}
 
-From first RISC-V Proxy Kernel used for noob experiments, our project finnaly determines to use FreeRTOS to build our applications. Based on concept of task, we encapsulate some certain enclave API functions and labels for users, who could simply invoke these achievements without knowing what is working underneath. 
+From first RISC-V Proxy Kernel used for noob experiments, our project finally determines to use FreeRTOS to build our applications. Based on concept of task, we encapsulate some certain enclave API functions and labels for users, who could simply invoke these achievements without knowing what is working underneath. 
 
 \subsubsection{Basic Execution Environment Theoretical Concept}
 
-Since RISC-V program could not run by itself, applications ,based on RISC-V, need kernel support to work.  For instance, the RISC-V Proxy Kernel, pk, is a lightweight application execution environment that can host statically-linked RISC-V ELF binaries. It is designed to support tethered RISC-V implementations with limited I/O capability and thus handles I/O-related system called by proxying them to a host computer. Tethered System, as its name, refers to those system that cannot stand alone, which means that they may not have complete facilities and depend on a host system to boot. Speaking of boot, pk goes with the Berkely Boot Loader, denoted as bbl. It is the supervisor part of this execution environment and need to handle basic booting work, like initialization.
+Since RISC-V program could not run by itself, applications ,based on RISC-V, need kernel support to work.  For instance, the RISC-V Proxy Kernel, pk, is a lightweight application execution environment that can host statically-linked RISC-V ELF binaries. It is designed to support tethered RISC-V implementations with limited I/O capability and thus handles I/O-related system called by proxying them to a host computer. Tethered System, as its name, refers to those system that cannot stand alone, which means that they may not have complete facilities and depend on a host system to boot. Speaking of boot, pk goes with the Berkly Boot Loader, denoted as bbl. It is the supervisor part of this execution environment and need to handle basic booting work, like initialization.
 
-To be more detailed, RISC-V Proxy Kernel implement a communication between RISC-V Target running proxy kernel and x86 Host running frontend server. The bridge between them is called Host-Target Interface (HTIF), which corresponds to riscv-fesvr project.
+To be more detailed, RISC-V Proxy Kernel implement a communication between RISC-V Target running proxy kernel and x86 Host running front-end server. The bridge between them is called Host-Target Interface (HTIF), which corresponds to riscv-fesvr project.
 
 At first, many experimentations related our final goal were done by using pk. Then, based on these theoretical concepts learned from pk, our project determines to build applications on FreeRTOS, which is a open source real-time operating system kernel for embedded devices. What is more, it has been ported to RISC-V micro-controller platform. 
 
@@ -135,7 +135,7 @@ Our trusted supervisor provides FreeRTOS a series of API to manipulate enclaves.
 \section{Demo Design}
 We design a demo program to show our design works. Boot loader runs in machine mode, first load our tag service, then is the FreeRTOS kernel. When everything is ready, switch to user mode to run our test program. Part of the memory is allocated for the trusted environment, then TU is marked for this part, and TC is marked for the first instruction as the entry. Then the program and relevant data are loaded, and the trusted program can be called after initialization. When program finished, we will release this part and re-mark the N mark.[images]
 
-The operation of the trust encryption function is to use the tags marked with TU to encrypt the data marked with N, that is to say, use the trust data to encrypt the untrusted data. In the demo, test\_n corresponds to the untrusted data, and test\_s corresponds to the trust data.We encrypt data in bytes. When  trust function is completed, we return to untrust world and print our encrypted result.[image]
+The operation of the trust encryption function is to use the tags marked with TU to encrypt the data marked with N, that is to say, use the trust data to encrypt the untrusted data. In the demo, test\_n corresponds to the untrusted data, and test\_s corresponds to the trust data.We encrypt data in bytes. When  trust function is completed, we return to untrusted world and print our encrypted result.[image]
 
 At the same time, we designed an untrusted program to try to access the trusted world to prove our design works. As shown in the figure, this program tried to directly output the key, but it failed, which caused a trap to terminate this process. The following output information is the register content at this time.[image]
 
@@ -148,7 +148,7 @@ At the same time, we designed an untrusted program to try to access the trusted 
 \section{MMIC designs}
 
 The MMICs were fabricated in a $0.15\mu m$ gate length process. The PAs have been designed for Envelope Tracking application. The output networks are optimized on efficiency performances.
-Fig. \ref{picture} shows the X-Band power amplifiers charaterized in both amplifier and rectifier modes in this paper:
+Fig. \ref{picture} shows the X-Band power amplifiers characterized in both amplifier and rectifier modes in this paper:
 \begin{itemize}
 \item Circuit-A (Fig. \ref{picture}a) is a $10\times100\mu m$ single transistor amplifier ;
 \item Circuit-B (Fig. \ref{picture}b) is a single stage amplifier that combines two $10\times100\mu m$ transistors with a reactive combiner.
