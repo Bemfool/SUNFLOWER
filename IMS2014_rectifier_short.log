@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  17 APR 2019 11:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  17 APR 2019 22:43
 entering extended mode
 **"C:/Users/Keith Lin/Desktop/SUNFLOWER/IMS2014_rectifier_short.tex"
 ("C:/Users/Keith Lin/Desktop/SUNFLOWER/IMS2014_rectifier_short.tex"
@@ -309,76 +309,6 @@ Underfull \vbox (badness 2042) has occurred while \output is active []
 Underfull \vbox (badness 1895) has occurred while \output is active []
 
  [3]
-<IMS2014_Pictures_PA.png, id=21, 821.0675pt x 286.06876pt>
-File: IMS2014_Pictures_PA.png Graphic file (type png)
-<use IMS2014_Pictures_PA.png>
-Package pdftex.def Info: IMS2014_Pictures_PA.png  used on input line 159.
-(pdftex.def)             Requested size: 249.33127pt x 86.8689pt.
-
-
-LaTeX Warning: Citation `Verspecht2010' on page 4 undefined on input line 170.
-
-
-LaTeX Warning: Citation `Roblin2011' on page 4 undefined on input line 170.
-
-
-LaTeX Warning: Citation `Verspecht2005' on page 4 undefined on input line 170.
-
-<IMS2014_bench.pdf, id=23, 1399.2275pt x 432.61626pt>
-File: IMS2014_bench.pdf Graphic file (type pdf)
-<use IMS2014_bench.pdf>
-Package pdftex.def Info: IMS2014_bench.pdf  used on input line 180.
-(pdftex.def)             Requested size: 245.71754pt x 75.96642pt.
-[4 <./IMS2014_Pictures_PA.png> <./IMS2014_bench.pdf>]
-<IMS2014_Mike_Amplifier.pdf, id=49, 507.8975pt x 240.9pt>
-File: IMS2014_Mike_Amplifier.pdf Graphic file (type pdf)
-<use IMS2014_Mike_Amplifier.pdf>
-Package pdftex.def Info: IMS2014_Mike_Amplifier.pdf  used on input line 205.
-(pdftex.def)             Requested size: 180.67499pt x 85.69469pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 210--211
-
- []
-
-
-LaTeX Warning: Citation `Reveyrand2012' on page 5 undefined on input line 213.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
-
- []
-
-<IMS2014_Mike_Rectifier_mVGG.pdf, id=50, 730.73pt x 277.035pt>
-File: IMS2014_Mike_Rectifier_mVGG.pdf Graphic file (type pdf)
-<use IMS2014_Mike_Rectifier_mVGG.pdf>
-Package pdftex.def Info: IMS2014_Mike_Rectifier_mVGG.pdf  used on input line 21
-9.
-(pdftex.def)             Requested size: 245.71754pt x 93.15498pt.
-<IMS2014_Mike_Rectifier.pdf, id=51, 763.85374pt x 276.03125pt>
-File: IMS2014_Mike_Rectifier.pdf Graphic file (type pdf)
-<use IMS2014_Mike_Rectifier.pdf>
-Package pdftex.def Info: IMS2014_Mike_Rectifier.pdf  used on input line 233.
-(pdftex.def)             Requested size: 245.71754pt x 88.7909pt.
-[5 <./IMS2014_Mike_Amplifier.pdf> <./IMS2014_Mike_Rectifier_mVGG.pdf
-
-pdfTeX warning: pdflatex (file ./IMS2014_Mike_Rectifier_mVGG.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
-> <./IMS2014_Mike_Rectifier.pdf
-
-pdfTeX warning: pdflatex (file ./IMS2014_Mike_Rectifier.pdf): PDF inclusion: mu
-ltiple pdfs with page group included in a single page
->]
-<IMS2014_Scott_Amplifier.pdf, id=149, 505.89pt x 248.93pt>
-File: IMS2014_Scott_Amplifier.pdf Graphic file (type pdf)
-<use IMS2014_Scott_Amplifier.pdf>
-Package pdftex.def Info: IMS2014_Scott_Amplifier.pdf  used on input line 264.
-(pdftex.def)             Requested size: 180.67499pt x 88.90443pt.
-<IMS2014_Scott_Rectifier.pdf, id=150, 763.85374pt x 276.03125pt>
-File: IMS2014_Scott_Rectifier.pdf Graphic file (type pdf)
-<use IMS2014_Scott_Rectifier.pdf>
-Package pdftex.def Info: IMS2014_Scott_Rectifier.pdf  used on input line 274.
-(pdftex.def)             Requested size: 245.71754pt x 88.7909pt.
-
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -390,41 +320,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6 <./IMS2014_Scott_Amplifier.pdf> <./IMS2014_Scott_Rectifier.pdf
-
-pdfTeX warning: pdflatex (file ./IMS2014_Scott_Rectifier.pdf): PDF inclusion: m
-ultiple pdfs with page group included in a single page
->] (IMS2014_rectifier_short.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[4] (IMS2014_rectifier_short.aux) ) 
 Here is how much of TeX's memory you used:
- 2947 strings out of 492945
- 44833 string characters out of 3136411
- 121262 words of memory out of 3000000
- 6798 multiletter control sequences out of 15000+200000
- 39701 words of font info for 76 fonts, out of 3000000 for 9000
+ 2884 strings out of 492945
+ 43400 string characters out of 3136411
+ 120189 words of memory out of 3000000
+ 6752 multiletter control sequences out of 15000+200000
+ 34597 words of font info for 65 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
- 41i,9n,25p,1117b,285s stack positions out of 5000i,500n,10000p,200000b,50000s
-{D:/Software/miktex/miktex/fonts/enc/dvips/base/8r.enc}<D:/Software/miktex/mi
-ktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Software/miktex/miktex/fonts
-/type1/public/amsfonts/cm/cmmi12.pfb><D:/Software/miktex/miktex/fonts/type1/pub
-lic/amsfonts/cm/cmmi6.pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfont
-s/cm/cmmi7.pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmmi8.
-pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Sof
-tware/miktex/miktex/fonts/type1/public/amsfonts/cm/cmr17.pfb><D:/Software/mikte
-x/miktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Software/miktex/miktex/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb><D:/Software/miktex/miktex/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb><D:/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Sof
-tware/miktex/miktex/fonts/type1/urw/times/utmb8a.pfb><D:/Software/miktex/miktex
-/fonts/type1/urw/times/utmbi8a.pfb><D:/Software/miktex/miktex/fonts/type1/urw/t
-imes/utmr8a.pfb><D:/Software/miktex/miktex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on IMS2014_rectifier_short.pdf (6 pages, 1193606 bytes).
+ 41i,8n,25p,1117b,238s stack positions out of 5000i,500n,10000p,200000b,50000s
+{D:/Software/miktex/miktex/fonts/enc/dvips/b
+ase/8r.enc}<D:/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+><D:/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/Softwa
+re/miktex/miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Software/miktex/m
+iktex/fonts/type1/urw/times/utmb8a.pfb><D:/Software/miktex/miktex/fonts/type1/u
+rw/times/utmbi8a.pfb><D:/Software/miktex/miktex/fonts/type1/urw/times/utmr8a.pf
+b><D:/Software/miktex/miktex/fonts/type1/urw/times/utmri8a.pfb>
+Output written on IMS2014_rectifier_short.pdf (4 pages, 159268 bytes).
 PDF statistics:
- 257 PDF objects out of 1000 (max. 8388607)
+ 50 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
