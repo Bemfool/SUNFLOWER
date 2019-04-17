@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  17 APR 2019 22:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  17 APR 2019 23:42
 entering extended mode
 **"C:/Users/Keith Lin/Desktop/SUNFLOWER/IMS2014_rectifier_short.tex"
 ("C:/Users/Keith Lin/Desktop/SUNFLOWER/IMS2014_rectifier_short.tex"
@@ -198,18 +198,18 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 (IMS2014_rectifier_short.aux)
 \openout1 = `IMS2014_rectifier_short.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 
 (D:\Software\miktex\miktex\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -271,11 +271,11 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-** ATTENTION: \authorblockN is deprecated (line 19). Use \IEEEauthorblockN inst
+** ATTENTION: \authorblockN is deprecated (line 17). Use \IEEEauthorblockN inst
 ead.
-** ATTENTION: \authorblockN is deprecated (line 19). Use \IEEEauthorblockN inst
+** ATTENTION: \authorblockN is deprecated (line 17). Use \IEEEauthorblockN inst
 ead.
-** ATTENTION: \keywords is deprecated (line 32). Use \IEEEkeywords instead.
+** ATTENTION: \keywords is deprecated (line 31). Use \IEEEkeywords instead.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -283,6 +283,25 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
+Package epstopdf Info: Source file: <memory.eps>
+(epstopdf)                    date: 2019-04-17 23:39:23
+(epstopdf)                    size: 2313590 bytes
+(epstopdf)             Output file: <memory-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-04-17 23:42:24
+(epstopdf)                    size: 75554 bytes
+(epstopdf)             Command: <epstopdf --outfile=memory-eps-converted-to.pdf
+ memory.eps>
+(epstopdf)             \includegraphics on input line 73.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ./memory-eps-converted-to.pdf): PDF inclusion: f
+ound PDF version <1.7>, but at most version <1.5> allowed
+<memory-eps-converted-to.pdf, id=9, 601.24625pt x 285.065pt>
+File: memory-eps-converted-to.pdf Graphic file (type pdf)
+<use memory-eps-converted-to.pdf>
+Package pdftex.def Info: memory-eps-converted-to.pdf  used on input line 73.
+(pdftex.def)             Requested size: 226.79846pt x 107.52982pt.
 Package epstopdf Info: Source file: <LSCT.eps>
 (epstopdf)                    date: 2019-04-17 00:27:10
 (epstopdf)                    size: 3461039 bytes
@@ -291,24 +310,83 @@ Package epstopdf Info: Source file: <LSCT.eps>
 (epstopdf)                    size: 53339 bytes
 (epstopdf)             Command: <epstopdf --outfile=LSCT-eps-converted-to.pdf L
 SCT.eps>
-(epstopdf)             \includegraphics on input line 87.
+(epstopdf)             \includegraphics on input line 93.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./LSCT-eps-converted-to.pdf): PDF inclusion: fou
 nd PDF version <1.7>, but at most version <1.5> allowed
-<LSCT-eps-converted-to.pdf, id=9, 950.55125pt x 219.82124pt>
+<LSCT-eps-converted-to.pdf, id=10, 950.55125pt x 219.82124pt>
 File: LSCT-eps-converted-to.pdf Graphic file (type pdf)
 <use LSCT-eps-converted-to.pdf>
-Package pdftex.def Info: LSCT-eps-converted-to.pdf  used on input line 87.
+Package pdftex.def Info: LSCT-eps-converted-to.pdf  used on input line 93.
 (pdftex.def)             Requested size: 252.0pt x 58.27582pt.
 
-Underfull \vbox (badness 2042) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2 <./LSCT-eps-converted-to.pdf>]
-Underfull \vbox (badness 1895) has occurred while \output is active []
+ [2 <./memory-eps-converted-to.pdf>] [3 <./LSCT-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <Demo2.eps>
+(epstopdf)                    date: 2019-04-17 23:15:00
+(epstopdf)                    size: 774656 bytes
+(epstopdf)             Output file: <Demo2-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-04-17 23:15:49
+(epstopdf)                    size: 20113 bytes
+(epstopdf)             Command: <epstopdf --outfile=Demo2-eps-converted-to.pdf 
+Demo2.eps>
+(epstopdf)             \includegraphics on input line 145.
+Package epstopdf Info: Output file is already uptodate.
 
- [3]
+
+pdfTeX warning: pdflatex (file ./Demo2-eps-converted-to.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<Demo2-eps-converted-to.pdf, id=28, 474.77374pt x 154.5775pt>
+File: Demo2-eps-converted-to.pdf Graphic file (type pdf)
+<use Demo2-eps-converted-to.pdf>
+Package pdftex.def Info: Demo2-eps-converted-to.pdf  used on input line 145.
+(pdftex.def)             Requested size: 252.0pt x 82.04596pt.
+Package epstopdf Info: Source file: <Demo4.eps>
+(epstopdf)                    date: 2019-04-17 23:30:45
+(epstopdf)                    size: 3221513 bytes
+(epstopdf)             Output file: <Demo4-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-04-17 23:31:28
+(epstopdf)                    size: 62203 bytes
+(epstopdf)             Command: <epstopdf --outfile=Demo4-eps-converted-to.pdf 
+Demo4.eps>
+(epstopdf)             \includegraphics on input line 153.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ./Demo4-eps-converted-to.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<Demo4-eps-converted-to.pdf, id=29, 643.40375pt x 513.92pt>
+File: Demo4-eps-converted-to.pdf Graphic file (type pdf)
+<use Demo4-eps-converted-to.pdf>
+Package pdftex.def Info: Demo4-eps-converted-to.pdf  used on input line 153.
+(pdftex.def)             Requested size: 176.39923pt x 140.90105pt.
+Package epstopdf Info: Source file: <Demo1.eps>
+(epstopdf)                    date: 2019-04-17 23:09:42
+(epstopdf)                    size: 2107641 bytes
+(epstopdf)             Output file: <Demo1-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-04-17 23:10:38
+(epstopdf)                    size: 85810 bytes
+(epstopdf)             Command: <epstopdf --outfile=Demo1-eps-converted-to.pdf 
+Demo1.eps>
+(epstopdf)             \includegraphics on input line 162.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ./Demo1-eps-converted-to.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<Demo1-eps-converted-to.pdf, id=30, 799.98875pt x 275.0275pt>
+File: Demo1-eps-converted-to.pdf Graphic file (type pdf)
+<use Demo1-eps-converted-to.pdf>
+Package pdftex.def Info: Demo1-eps-converted-to.pdf  used on input line 162.
+(pdftex.def)             Requested size: 252.0pt x 86.63411pt.
+
+Underfull \vbox (badness 5331) has occurred while \output is active []
+
+ [4 <./Demo2-eps-converted-to.pdf> <./Demo4-eps-converted-to.pdf> <./Demo1-eps-
+converted-to.pdf>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -320,12 +398,12 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4] (IMS2014_rectifier_short.aux) ) 
+[5] (IMS2014_rectifier_short.aux) ) 
 Here is how much of TeX's memory you used:
- 2884 strings out of 492945
- 43400 string characters out of 3136411
- 120189 words of memory out of 3000000
- 6752 multiletter control sequences out of 15000+200000
+ 2908 strings out of 492945
+ 44088 string characters out of 3136411
+ 120221 words of memory out of 3000000
+ 6772 multiletter control sequences out of 15000+200000
  34597 words of font info for 65 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
  41i,8n,25p,1117b,238s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -336,9 +414,9 @@ re/miktex/miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Software/miktex/m
 iktex/fonts/type1/urw/times/utmb8a.pfb><D:/Software/miktex/miktex/fonts/type1/u
 rw/times/utmbi8a.pfb><D:/Software/miktex/miktex/fonts/type1/urw/times/utmr8a.pf
 b><D:/Software/miktex/miktex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on IMS2014_rectifier_short.pdf (4 pages, 159268 bytes).
+Output written on IMS2014_rectifier_short.pdf (5 pages, 396989 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
+ 75 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

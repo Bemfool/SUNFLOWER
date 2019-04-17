@@ -2,32 +2,39 @@
 \citation{TrustZone}
 \citation{SGX}
 \citation{TIMBERV}
-\citation{TIMBERV}
 \citation{HDFI}
 \citation{TIMBERV}
 \citation{RISCV}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces To implement tagged memory aided trusted execution environment, the most basic part is to modify the hardware so that it can support tagged memory. We design a 2-bit tag system and a tag-aware instruction set to visit memory with tags.}}{2}\protected@file@percent }
+\newlabel{fig:memory}{{1}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {II}SUNFLOWER Design Frame}{2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {III}Design Details}{2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Hardware Design}{2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}1}Tag System Design}{2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}2}Tag-aware Instructions}{2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces We extend the original RISC-V instruction architecture with a set of tag-aware instructions to support tagged memory operations. The newly designed instructions are based on I/S type instructions and can perform access control for load and store operations according to the destination memory tag.(a) LCT instructions machine code; (b) SCT instruction machine code.}}{2}\protected@file@percent }
-\newlabel{fig:LSCT}{{1}{2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}3}Datapath and Decoder Modification}{2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces We extend the original RISC-V instruction architecture with a set of tag-aware instructions to support tagged memory operations. The newly designed instructions are based on I/S type instructions and can perform access control for load and store operations according to the destination memory tag.(a) LCT instructions machine code; (b) SCT instruction machine code.}}{3}\protected@file@percent }
+\newlabel{fig:LSCT}{{2}{3}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}4}CPU State Extension}{3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}5}Tag Policy}{3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Operating System Related Design}{3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}1}Basic Execution Environment Theoretical Concept}{3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}2}Custom Functions Supported by FreeRTOS Port}{3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}3}Enclave Implementation Details}{3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}4}Enclave Service API Encapsulation}{4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Demo Design}{4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The operation of the trust encryption function is to use the tags marked with TU to encrypt the data marked with N, that is to say, use the trust data to encrypt the untrusted data. In the demo, test\_n corresponds to the untrusted data, and test\_s corresponds to the trust data.We encrypt data in bytes. When trust function is completed, we return to untrusted world and print our encrypted result.}}{4}\protected@file@percent }
+\newlabel{fig:demo_code}{{3}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Boot loader runs in machine mode, first load our tag service, then is the FreeRTOS kernel. When everything is ready, switch to user mode to run our test program. Part of the memory is allocated for the trusted environment, then TU is marked for this part, and TC is marked for the first instruction as the entry. Then the program and relevant data are loaded, and the trusted program can be called after initialization. When program finished, we will release this part and re-mark the N mark.}}{4}\protected@file@percent }
+\newlabel{fig:demo_output}{{4}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces This program tried to directly output the key, but it failed, which caused a trap to terminate this process. The following output information is the register content at this time.}}{4}\protected@file@percent }
+\newlabel{fig:demo_fail}{{5}{4}}
 \bibcite{TrustZone}{1}
 \bibcite{SGX}{2}
 \bibcite{TIMBERV}{3}
 \bibcite{HDFI}{4}
 \bibcite{RISCV}{5}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}4}Enclave Service API Encapsulation}{4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Demo Design}{4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {V}Future Work and Possible Extension}{4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Future Work and Possible Extension}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{5}\protected@file@percent }

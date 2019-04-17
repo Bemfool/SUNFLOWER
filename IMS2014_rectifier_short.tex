@@ -6,18 +6,17 @@
 \usepackage{eqparbox}
 %+++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
 \hyphenation{op-tical net-works semi-conduc-tor IEEEtran}
 \begin{document}
 
-%+++++++++++++++++++++++++++++++++++++++++++++++++++
-\title{\LARGE SUNFLOWER: A Trust Execution Environment on RISCV \\Based on Tagged Memory}
-\author{\authorblockN{Xu Jinyan 316010**** Duan Yuxuan 316010**** Lin Yizhu 3160104229} }
-% \authorblockA{\authorrefmark{1}Leave Affiliation List blank for your Summary (initial) submission}}
-%+++++++++++++++++++++++++++++++++++++++++++++++++++
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\title{\LARGE SUNFLOWER: A Trust Execution Environment on RISC-V \\Based on Tagged Memory}
+\author{\authorblockN{Xu Jinyan 3160101126 Duan Yuxuan 3160105210 Lin Yizhu 3160104229} }
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 \maketitle
 \setlength{\parskip}{0.4\baselineskip}
+
 
 % ================
 % # Abstract     #
@@ -33,6 +32,7 @@ Here, we design a tagged memory hardware security architecture, inspired by the 
 RISC-V, tagged memory, tag-aware instruction set architecture.\\
 \end{keywords}
 
+
 % ========================
 % # I. Introduction      #
 % ========================
@@ -42,7 +42,7 @@ IoT devices are rapidly entering everyday life. However, these devices have a gr
 
 Recent years have witnessed many implementations of TEE on different systems. ARM TrustZone and Intel SGX are two widely applied TEE architectures. ARM TrustZone divides the computer resources into a secure and non-secure world on hardware level.\cite{TrustZone} The secure world can access all system resources while the non-secure world can only access data in the non-secure world or call secure applications through designed secure entry points. With TrustZone architecture, if sensitive data and code are hidden in the secure world, they cannot be accessed by untrusted applications or system. However, TrustZone needs a secure kernel to manage the secure world, providing secure system services, thus enlarge the trusted computing base(TCB), which increases the risk. Intel SGX uses an isolated container called enclave which hold sensitive part of applications.\cite{SGX} Unlike TrustZone, SGX does not need any privileged supervisor like a trusted kernel, thus reduces TCB. But SGX needs complex instructions to manage enclaves.
 
-Resource-constrained devices like IoT devices often have little memory, thus needs fine-grained memory management. The isolation boundary the existing implementations of TEE provides are not fine-grained enough for small IoT devices to apply.\cite{TIMBERV} Inspired by the work in \cite{TIMBERV}, we use a technique called \emph{tagged memory} to provide flexible isolation for low-end devices. The main method of tagged memory technique is to associate memory blocks with additional metadata called tag, used for access control and other memory management. There have been active new research on tagged memory, such as use this technique help data flow tracking.\cite{HDFI}. However current tagged memory scheme are not efficient enough on small IoT devices\cite{TIMBERV}, which is the aim of our work.
+Resource-constrained devices like IoT devices often have little memory, thus needs fine-grained memory management. The isolation boundary the existing implementations of TEE provides are not fine-grained enough for small IoT devices to apply. Inspired by the work in \cite{TIMBERV}, we use a technique called \emph{tagged memory} to provide flexible isolation for low-end devices. The main method of tagged memory technique is to associate memory blocks with additional metadata called tag, used for access control and other memory management. There have been active new research on tagged memory, such as use this technique help data flow tracking.\cite{HDFI}. However current tagged memory scheme are not efficient enough on small IoT devices\cite{TIMBERV}, which is the aim of our work.
 
 This work is based on the instruction set architecture RISC-V.\cite{RISCV} RISC-V is suitable for development on IoT devices due to its simple instruction architecture. Also it is open and support instruction extension. On the other hand, the scheme which uses tagged memory technique to implement TEE hasn't been supported on RISC-V. These are the reasons why we choose to implement our work on RISC-V. RISC-V defines three different privilege mode: machine-mode(M), supervisor-mode(S) and user-mode(U). M-mode can access all the system resources and are meant for emulating the machine, while S-mode and U-mode are respectively used by operate systems and user applications.
 
@@ -52,7 +52,7 @@ This report will introduce our design frame and details of hardware and software
 
 
 % ====================
-% # II. MMIC designs #
+% # II. Design Frame #
 % ====================
 
 \section{SUNFLOWER Design Frame}
@@ -67,7 +67,13 @@ This work is a hardware and software co-design. The hardware design is based on 
 In this section, we will introduce our hardware-software co-design system in detail. In general hardware design includes the implementation of different tags and tag-aware instruction sets, as well as the modification on the datapath and decoder of CPU, while the software part is more close to encapsulate these operating system calls and memory management. 
 
 \subsection{Hardware Design}
-To implement tagged memory aided trusted execution environment, the most basic part is to modify the hardware so that it can support tagged memory. We design a 2-bit tag system and a tag-aware instruction set to visit memory with tags. In order to satisfy new instructions, which we need to do load and store with tag check, we extend the original CPU and other hardware basis to support them. 
+To implement tagged memory aided trusted execution environment, the most basic part is to modify the hardware so that it can support tagged memory. We design a 2-bit tag system and a tag-aware instruction set to visit memory with tags, as shown in figure \ref{fig:memory}. In order to satisfy new instructions, which we need to do load and store with tag check, we extend the original CPU and other hardware basis to support them. 
+
+\begin{figure}
+	\centering{\includegraphics[width=0.9\columnwidth]{memory.eps}}
+	\caption{To implement tagged memory aided trusted execution environment, the most basic part is to modify the hardware so that it can support tagged memory. We design a 2-bit tag system and a tag-aware instruction set to visit memory with tags.}
+	\label{fig:memory}
+\end{figure}
 
 \subsubsection{Tag System Design}
 Memory tags in SUNFLOWER system each has 2 bits, resulting in 4 different types of tags, which are N-tag, TU-tag, TS-tag and TC-tag, respectively representing normal mode, trusted user mode, trusted supervisor mode and trusted entry. To be more specific, N-tag is for memory in normal world(not trusted), namely the opposite side of secure world(trusted); TU-tag is for code, namely text, and data in user-mode trusted enclaves, while TS-tag is in supervisor-mode trusted enclaves. TC-tag is for entry point from normal state to trusted state. The design of TC-tag is not redundant since we are supposed to mark where the trusted text begins and defense that kind of attack, which jumps into enclave from other unsafe places. It is designed just for instructions, not for data, which is different from the others. And for data, we use TU-tag to mark it belongs to secure world and TC-tag in the beginning is not needed.
@@ -133,12 +139,30 @@ Finally, get each part's address at load-time because linker cannot know symbol 
 Our trusted supervisor provides FreeRTOS a series of API to manipulate enclaves. Every enclave has a structure, denoted as TTCB, to keep information, like region address, magic number for security and so on. In these operating system services, we use mutex lock to maintain mutual exclusiveness of TTCB and tag demanding memory by using checked load and store instructions, which also are encapsulated.
 
 \section{Demo Design}
-We design a demo program to show our design works. Boot loader runs in machine mode, first load our tag service, then is the FreeRTOS kernel. When everything is ready, switch to user mode to run our test program. Part of the memory is allocated for the trusted environment, then TU is marked for this part, and TC is marked for the first instruction as the entry. Then the program and relevant data are loaded, and the trusted program can be called after initialization. When program finished, we will release this part and re-mark the N mark.[images]
+We design a demo program to show our design works, shown like \ref{fig:demo_code}. Boot loader runs in machine mode, first load our tag service, then is the FreeRTOS kernel. When everything is ready, switch to user mode to run our test program. Part of the memory is allocated for the trusted environment, then TU is marked for this part, and TC is marked for the first instruction as the entry. Then the program and relevant data are loaded, and the trusted program can be called after initialization. When program finished, we will release this part and re-mark the N mark.
 
-The operation of the trust encryption function is to use the tags marked with TU to encrypt the data marked with N, that is to say, use the trust data to encrypt the untrusted data. In the demo, test\_n corresponds to the untrusted data, and test\_s corresponds to the trust data.We encrypt data in bytes. When  trust function is completed, we return to untrusted world and print our encrypted result.[image]
+\begin{figure}
+	\centering{\includegraphics[width=\columnwidth]{Demo2.eps}}
+	\caption{The operation of the trust encryption function is to use the tags marked with TU to encrypt the data marked with N, that is to say, use the trust data to encrypt the untrusted data. In the demo, test\_n corresponds to the untrusted data, and test\_s corresponds to the trust data.We encrypt data in bytes. When  trust function is completed, we return to untrusted world and print our encrypted result.}
+	\label{fig:demo_code}
+\end{figure}
 
-At the same time, we designed an untrusted program to try to access the trusted world to prove our design works. As shown in the figure, this program tried to directly output the key, but it failed, which caused a trap to terminate this process. The following output information is the register content at this time.[image]
+The operation of the trust encryption function is to use the tags marked with TU to encrypt the data marked with N, that is to say, use the trust data to encrypt the untrusted data. In the demo, test\_n corresponds to the untrusted data, and test\_s corresponds to the trust data.We encrypt data in bytes. When  trust function is completed, we return to untrusted world and print our encrypted result, as figure \ref{fig:demo_output} shows.
 
+\begin{figure}
+	\centering{\includegraphics[width=0.7\columnwidth]{Demo4.eps}}
+	\caption{Boot loader runs in machine mode, first load our tag service, then is the FreeRTOS kernel. When everything is ready, switch to user mode to run our test program. Part of the memory is allocated for the trusted environment, then TU is marked for this part, and TC is marked for the first instruction as the entry. Then the program and relevant data are loaded, and the trusted program can be called after initialization. When program finished, we will release this part and re-mark the N mark.}
+	\label{fig:demo_output}
+\end{figure}
+
+
+At the same time, we designed an untrusted program to try to access the trusted world to prove our design works. As shown in the figure \ref{fig:demo_fail}, this program tried to directly output the key, but it failed, which caused a trap to terminate this process. The following output information is the register content at this time.
+
+\begin{figure}
+	\includegraphics[width=\columnwidth]{Demo1.eps}
+	\caption{This program tried to directly output the key, but it failed, which caused a trap to terminate this process. The following output information is the register content at this time.}
+	\label{fig:demo_fail}
+\end{figure}
 
 % ======================================
 % # Future Work and Possible Extension #
@@ -146,8 +170,11 @@ At the same time, we designed an untrusted program to try to access the trusted 
 
 \section{Future Work and Possible Extension}
 Our project still has many limitations. In one way we have not achieve whole implementation such as MPU part, and in another way we would like to develop more custom applications. 
+
 Without MPU control, it is possible for attacker to crack our trusted zone from other process, since we just check the tag not where they belongs. Hence, In the next few days, our team attempts to add MPU protection. And let MPU set different modes with different privileges, in order to defend outside attack. Based on existing achievements that we have found related port in FreeRTOS, it is not difficult to implement it in certain operating system.
+
 What is more, for our current demo, we did not implement to set tag to lower privileges. But this is a little problem, which will be fixed after appending MPU.
+
 Furthermore, we try to exploit the most development and utilization of our achievements. A typically example is plug-in. Be as specific as possible, plug-ins are supposed not to be able to touch the main application data or function, which owner want to keep secret. Just as demo shows, if a normal function attempts to access secure data, then the task would break down. Beside this kind of specific plug-ins, written in advance during coding, we would like to achieve the case that users could add any custom plug-ins without any secure problems, which is ideal but realizable.
 
 
