@@ -90,10 +90,10 @@ Above checked load or store instructions are defined through RISC-V port. Luckil
 \end{figure}
 
 \subsubsection{Datapath and Decoder Modification}
-To support the newly designed tag-aware instructions, the CPU also needs to be modified. The decoder is extended to extract the etag from LCT instructions and the etag and ntag from SCT instructions. Besides, the immediate field is changed so the original signed extension part cannot run correctly. We add a new signed extension module to correctly extract address offset from new instructions.
+For the sake of newly designed tag-aware instructions, the CPU also oughts to be modified. In the meanwhile, the decoder is extended to be capable to extract the etag from LCT instructions and the etag and ntag from SCT instructions. Besides, the immediate field is changed so the original signed extension part cannot run correctly. We add a new signed extension module to correctly extract address offset from new instructions just like what has been explained before.
 
 \subsubsection{CPU State Extension}
-A new exception state is added to CPU to handle illegal memory operation related with tag policy. When the expected tag in the instruction and the destination memory tag don't match, CPU enters this exception state and raise a trap. This exception state makes sure the tag isolation policy is not abused and protect the trusted data from illegal access and change. 
+A branch-new exception state is added to CPU to handle illegal memory operation related with tag policy. When the expected tag in the instruction and the destination memory tag do not match, CPU enters this certain exception state and raises a trap. This exception state makes sure that the tag isolation policy will not be abused, and protects the trusted data from illegal access and modification. It is noteworthy is that upon most occasions malicious attacker could tamper the pointer, like CP or SP, respectively for code text and data segment, which is almost impossible to defend. Hence, what protectors should do is to check whether the pointer is pointing to a correct memory. In this, to protect trusted memory not to be overwritten is the priority action. 
 
 \subsubsection{Tag Policy}
 This section will explain the tag policy in SUNFLOWER, including the isolation policy and the update policy. For codes in N-domains, they can read, write data with N-tag and execute code with N-tag, as well as code with TC-tag to enter trusted mode. But codes in N-domains is not allowed to access code or data with TU-tag or TS-tag. For codes in TU-mode, they can read, write data with TU-tag and N-tag. They can execute instructions with TU-tag and TC-tag, and will leave trusted mode when executing codes with N-tag. The codes in TS-mode has access to all the resources. As for the tag update policy, the tags can only be updated under modes with higher or the same security level with itself, i.e. N-tag can be updated in N-domain, TU-mode and TS-mode, while TS-tag can be updated in TU-mode, TS-mode but not in N-domains. Specially, TC-tag can only be updated in TS-mode, to ensure security transform from normal domains to trusted modes. 
@@ -102,7 +102,7 @@ This section will explain the tag policy in SUNFLOWER, including the isolation p
 
 \subsection{Operating System Related Design}
 
-From first RISC-V Proxy Kernel used for noob experiments, our project finally determines to use FreeRTOS to build our applications. Based on concept of task, we encapsulate some certain enclave API functions and labels for users, who could simply invoke these achievements without knowing what is working underneath. 
+From first RISC-V Proxy Kernel used for beginner's experiments, our project finally determines to use FreeRTOS to build our applications. Based on concept of task, we encapsulate some certain enclave API functions and labels for users, who could simply invoke these achievements without knowing what is working underneath. 
 
 \subsubsection{Basic Execution Environment Theoretical Concept}
 
