@@ -1,14 +1,7 @@
-<<<<<<< HEAD:IMS2014_rectifier_short.log
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  17 APR 2019 19:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  19 APR 2019 16:38
 entering extended mode
-**./IMS2014_rectifier_short.tex
-(IMS2014_rectifier_short.tex
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.28)  18 APR 2019 10:33
-entering extended mode
-**"C:/Users/Keith Lin/Desktop/SUNFLOWER/SUNFLOWER.tex"
-("C:/Users/Keith Lin/Desktop/SUNFLOWER/SUNFLOWER.tex"
->>>>>>> 5ae4fae554722e686606e120b962abbbce57a1fe:SUNFLOWER.log
+**./SUNFLOWER.tex
+(SUNFLOWER.tex
 LaTeX2e <2018-12-01>
 (IEEEtran.cls
 Document Class: IEEEtran 2012/12/27 V1.8 by Michael Shell
@@ -199,26 +192,7 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 
 (E:\MikTex\tex/latex/trimspaces\trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-<<<<<<< HEAD:IMS2014_rectifier_short.log
-))) (IMS2014_rectifier_short.aux)
-\openout1 = `IMS2014_rectifier_short.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-(E:\MikTex\tex/context/base/mkii\supp-pdf.mkii
-=======
-)))
-(SUNFLOWER.aux)
+))) (SUNFLOWER.aux)
 \openout1 = `SUNFLOWER.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
@@ -233,8 +207,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
- (D:\Software\miktex\miktex\tex/context/base/mkii\supp-pdf.mkii
->>>>>>> 5ae4fae554722e686606e120b962abbbce57a1fe:SUNFLOWER.log
+
+(E:\MikTex\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count105
 \scratchdimen=\dimen130
@@ -306,153 +280,112 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-<<<<<<< HEAD:IMS2014_rectifier_short.log
-Package epstopdf Info: Source file: <LSCT.eps>
-(epstopdf)                    date: 2019-04-17 19:51:44
-(epstopdf)                    size: 3461039 bytes
-(epstopdf)             Output file: <LSCT-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-04-17 19:51:44
-=======
 Package epstopdf Info: Source file: <asset/memory.eps>
-(epstopdf)                    date: 2019-04-17 23:39:23
+(epstopdf)                    date: 2019-04-19 13:10:48
 (epstopdf)                    size: 2313590 bytes
 (epstopdf)             Output file: <asset/memory-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-04-18 10:28:33
+(epstopdf)                    date: 2019-04-19 13:10:48
 (epstopdf)                    size: 75554 bytes
 (epstopdf)             Command: <epstopdf --outfile=asset/memory-eps-converted-
 to.pdf asset/memory.eps>
-(epstopdf)             \includegraphics on input line 73.
+(epstopdf)             \includegraphics on input line 76.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ./asset/memory-eps-converted-to.pdf): PDF inclus
-ion: found PDF version <1.7>, but at most version <1.5> allowed
+pdfTeX warning: pdflatex.exe (file ./asset/memory-eps-converted-to.pdf): PDF in
+clusion: found PDF version <1.7>, but at most version <1.5> allowed
 <asset/memory-eps-converted-to.pdf, id=9, 601.24625pt x 285.065pt>
 File: asset/memory-eps-converted-to.pdf Graphic file (type pdf)
 <use asset/memory-eps-converted-to.pdf>
 Package pdftex.def Info: asset/memory-eps-converted-to.pdf  used on input line 
-73.
+76.
 (pdftex.def)             Requested size: 226.79846pt x 107.52982pt.
-Package epstopdf Info: Source file: <asset/LSCT.eps>
-(epstopdf)                    date: 2019-04-17 00:27:10
-(epstopdf)                    size: 3461039 bytes
-(epstopdf)             Output file: <asset/LSCT-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-04-18 10:28:39
->>>>>>> 5ae4fae554722e686606e120b962abbbce57a1fe:SUNFLOWER.log
-(epstopdf)                    size: 53339 bytes
-(epstopdf)             Command: <epstopdf --outfile=asset/LSCT-eps-converted-to
-.pdf asset/LSCT.eps>
-(epstopdf)             \includegraphics on input line 93.
-Package epstopdf Info: Output file is already uptodate.
-
-
-<<<<<<< HEAD:IMS2014_rectifier_short.log
-pdfTeX warning: pdflatex.exe (file ./LSCT-eps-converted-to.pdf): PDF inclusion:
- found PDF version <1.7>, but at most version <1.5> allowed
-<LSCT-eps-converted-to.pdf, id=9, 950.55125pt x 219.82124pt>
-File: LSCT-eps-converted-to.pdf Graphic file (type pdf)
-<use LSCT-eps-converted-to.pdf>
-Package pdftex.def Info: LSCT-eps-converted-to.pdf  used on input line 87.
-=======
-pdfTeX warning: pdflatex (file ./asset/LSCT-eps-converted-to.pdf): PDF inclusio
-n: found PDF version <1.7>, but at most version <1.5> allowed
-<asset/LSCT-eps-converted-to.pdf, id=10, 950.55125pt x 219.82124pt>
-File: asset/LSCT-eps-converted-to.pdf Graphic file (type pdf)
-<use asset/LSCT-eps-converted-to.pdf>
-Package pdftex.def Info: asset/LSCT-eps-converted-to.pdf  used on input line 93
-.
->>>>>>> 5ae4fae554722e686606e120b962abbbce57a1fe:SUNFLOWER.log
-(pdftex.def)             Requested size: 252.0pt x 58.27582pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2 <./asset/memory-eps-converted-to.pdf>] [3 <./asset/LSCT-eps-converted-to.pd
-f>]
-Package epstopdf Info: Source file: <asset/Demo2.eps>
-(epstopdf)                    date: 2019-04-17 23:15:00
-(epstopdf)                    size: 774656 bytes
-(epstopdf)             Output file: <asset/Demo2-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-04-18 10:28:41
-(epstopdf)                    size: 20113 bytes
-(epstopdf)             Command: <epstopdf --outfile=asset/Demo2-eps-converted-t
-o.pdf asset/Demo2.eps>
-(epstopdf)             \includegraphics on input line 145.
+ [2 <./asset/memory-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <asset/LSCT.eps>
+(epstopdf)                    date: 2019-04-19 13:10:48
+(epstopdf)                    size: 3461039 bytes
+(epstopdf)             Output file: <asset/LSCT-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-04-19 13:10:48
+(epstopdf)                    size: 53339 bytes
+(epstopdf)             Command: <epstopdf --outfile=asset/LSCT-eps-converted-to
+.pdf asset/LSCT.eps>
+(epstopdf)             \includegraphics on input line 96.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ./asset/Demo2-eps-converted-to.pdf): PDF inclusi
-on: found PDF version <1.7>, but at most version <1.5> allowed
+pdfTeX warning: pdflatex.exe (file ./asset/LSCT-eps-converted-to.pdf): PDF incl
+usion: found PDF version <1.7>, but at most version <1.5> allowed
+<asset/LSCT-eps-converted-to.pdf, id=19, 950.55125pt x 219.82124pt>
+File: asset/LSCT-eps-converted-to.pdf Graphic file (type pdf)
+<use asset/LSCT-eps-converted-to.pdf>
+Package pdftex.def Info: asset/LSCT-eps-converted-to.pdf  used on input line 96
+.
+(pdftex.def)             Requested size: 252.0pt x 58.27582pt.
+[3 <./asset/LSCT-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <asset/Demo2.eps>
+(epstopdf)                    date: 2019-04-19 13:10:47
+(epstopdf)                    size: 774656 bytes
+(epstopdf)             Output file: <asset/Demo2-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-04-19 13:10:47
+(epstopdf)                    size: 20113 bytes
+(epstopdf)             Command: <epstopdf --outfile=asset/Demo2-eps-converted-t
+o.pdf asset/Demo2.eps>
+(epstopdf)             \includegraphics on input line 148.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./asset/Demo2-eps-converted-to.pdf): PDF inc
+lusion: found PDF version <1.7>, but at most version <1.5> allowed
 <asset/Demo2-eps-converted-to.pdf, id=28, 474.77374pt x 154.5775pt>
 File: asset/Demo2-eps-converted-to.pdf Graphic file (type pdf)
 <use asset/Demo2-eps-converted-to.pdf>
 Package pdftex.def Info: asset/Demo2-eps-converted-to.pdf  used on input line 1
-45.
+48.
 (pdftex.def)             Requested size: 252.0pt x 82.04596pt.
 Package epstopdf Info: Source file: <asset/Demo4.eps>
-(epstopdf)                    date: 2019-04-17 23:30:45
+(epstopdf)                    date: 2019-04-19 13:10:47
 (epstopdf)                    size: 3221513 bytes
 (epstopdf)             Output file: <asset/Demo4-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-04-18 10:28:48
+(epstopdf)                    date: 2019-04-19 13:10:47
 (epstopdf)                    size: 62203 bytes
 (epstopdf)             Command: <epstopdf --outfile=asset/Demo4-eps-converted-t
 o.pdf asset/Demo4.eps>
-(epstopdf)             \includegraphics on input line 153.
+(epstopdf)             \includegraphics on input line 156.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ./asset/Demo4-eps-converted-to.pdf): PDF inclusi
-on: found PDF version <1.7>, but at most version <1.5> allowed
+pdfTeX warning: pdflatex.exe (file ./asset/Demo4-eps-converted-to.pdf): PDF inc
+lusion: found PDF version <1.7>, but at most version <1.5> allowed
 <asset/Demo4-eps-converted-to.pdf, id=29, 643.40375pt x 513.92pt>
 File: asset/Demo4-eps-converted-to.pdf Graphic file (type pdf)
 <use asset/Demo4-eps-converted-to.pdf>
 Package pdftex.def Info: asset/Demo4-eps-converted-to.pdf  used on input line 1
-53.
+56.
 (pdftex.def)             Requested size: 176.39923pt x 140.90105pt.
 Package epstopdf Info: Source file: <asset/Demo1.eps>
-(epstopdf)                    date: 2019-04-17 23:09:42
+(epstopdf)                    date: 2019-04-19 13:10:47
 (epstopdf)                    size: 2107641 bytes
 (epstopdf)             Output file: <asset/Demo1-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-04-18 10:30:04
+(epstopdf)                    date: 2019-04-19 13:10:47
 (epstopdf)                    size: 85810 bytes
 (epstopdf)             Command: <epstopdf --outfile=asset/Demo1-eps-converted-t
 o.pdf asset/Demo1.eps>
-(epstopdf)             \includegraphics on input line 162.
+(epstopdf)             \includegraphics on input line 165.
 Package epstopdf Info: Output file is already uptodate.
 
 
-<<<<<<< HEAD:IMS2014_rectifier_short.log
-pdfTeX warning: pdflatex.exe (file ./IMS2014_Mike_Rectifier_mVGG.pdf): PDF incl
-usion: multiple pdfs with page group included in a single page
-> <./IMS2014_Mike_Rectifier.pdf
-
-pdfTeX warning: pdflatex.exe (file ./IMS2014_Mike_Rectifier.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
->]
-<IMS2014_Scott_Amplifier.pdf, id=149, 505.89pt x 248.93pt>
-File: IMS2014_Scott_Amplifier.pdf Graphic file (type pdf)
-<use IMS2014_Scott_Amplifier.pdf>
-Package pdftex.def Info: IMS2014_Scott_Amplifier.pdf  used on input line 264.
-(pdftex.def)             Requested size: 180.67499pt x 88.90443pt.
-<IMS2014_Scott_Rectifier.pdf, id=150, 763.85374pt x 276.03125pt>
-File: IMS2014_Scott_Rectifier.pdf Graphic file (type pdf)
-<use IMS2014_Scott_Rectifier.pdf>
-Package pdftex.def Info: IMS2014_Scott_Rectifier.pdf  used on input line 274.
-(pdftex.def)             Requested size: 245.71754pt x 88.7909pt.
-=======
-pdfTeX warning: pdflatex (file ./asset/Demo1-eps-converted-to.pdf): PDF inclusi
-on: found PDF version <1.7>, but at most version <1.5> allowed
+pdfTeX warning: pdflatex.exe (file ./asset/Demo1-eps-converted-to.pdf): PDF inc
+lusion: found PDF version <1.7>, but at most version <1.5> allowed
 <asset/Demo1-eps-converted-to.pdf, id=30, 799.98875pt x 275.0275pt>
 File: asset/Demo1-eps-converted-to.pdf Graphic file (type pdf)
 <use asset/Demo1-eps-converted-to.pdf>
 Package pdftex.def Info: asset/Demo1-eps-converted-to.pdf  used on input line 1
-62.
+65.
 (pdftex.def)             Requested size: 252.0pt x 86.63411pt.
-
-Underfull \vbox (badness 5331) has occurred while \output is active []
->>>>>>> 5ae4fae554722e686606e120b962abbbce57a1fe:SUNFLOWER.log
-
- [4 <./asset/Demo2-eps-converted-to.pdf> <./asset/Demo4-eps-converted-to.pdf> <
-./asset/Demo1-eps-converted-to.pdf>]
+[4 <./asset/Demo2-eps-converted-to.pdf> <./asset/Demo4-eps-converted-to.pdf>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -464,58 +397,24 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-<<<<<<< HEAD:IMS2014_rectifier_short.log
-[6 <./IMS2014_Scott_Amplifier.pdf> <./IMS2014_Scott_Rectifier.pdf
+[5
 
-pdfTeX warning: pdflatex.exe (file ./IMS2014_Scott_Rectifier.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
->] (IMS2014_rectifier_short.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+ <./asset/Demo1-eps-converted-to.pdf>] (SUNFLOWER.aux) ) 
 Here is how much of TeX's memory you used:
- 2945 strings out of 492945
- 43653 string characters out of 3143481
- 121262 words of memory out of 3000000
- 6798 multiletter control sequences out of 15000+200000
- 39701 words of font info for 76 fonts, out of 3000000 for 9000
+ 2904 strings out of 492945
+ 42861 string characters out of 3143481
+ 119221 words of memory out of 3000000
+ 6770 multiletter control sequences out of 15000+200000
+ 34143 words of font info for 63 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
- 41i,9n,25p,1080b,285s stack positions out of 5000i,500n,10000p,200000b,50000s
-{E:/MikTex/fonts/enc/dvips/base/8r.enc}<E:/MikTex/fonts/type1/public/amsfonts
-/cm/cmmi10.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi12.pfb><E:/MikTex/
-fonts/type1/public/amsfonts/cm/cmmi6.pfb><E:/MikTex/fonts/type1/public/amsfonts
-/cm/cmmi7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmmi8.pfb><E:/MikTex/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTex/fonts/type1/public/amsfonts/c
-m/cmr17.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTex/fonts
-/type1/public/amsfonts/cm/cmr7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cm
-r8.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/MikTex/fonts/ty
-pe1/public/amsfonts/cm/cmsy7.pfb><E:/MikTex/fonts/type1/public/amsfonts/cm/cmsy
-8.pfb><E:/MikTex/fonts/type1/urw/times/utmb8a.pfb><E:/MikTex/fonts/type1/urw/ti
-mes/utmbi8a.pfb><E:/MikTex/fonts/type1/urw/times/utmr8a.pfb><E:/MikTex/fonts/ty
-pe1/urw/times/utmri8a.pfb>
-Output written on IMS2014_rectifier_short.pdf (6 pages, 1193621 bytes).
-=======
-[5] (SUNFLOWER.aux) ) 
-Here is how much of TeX's memory you used:
- 2909 strings out of 492945
- 44074 string characters out of 3136411
- 120221 words of memory out of 3000000
- 6772 multiletter control sequences out of 15000+200000
- 34597 words of font info for 65 fonts, out of 3000000 for 9000
- 1145 hyphenation exceptions out of 8191
- 41i,8n,25p,1103b,238s stack positions out of 5000i,500n,10000p,200000b,50000s
-{D:/Software/miktex/miktex/fonts/enc/dvips/base/8r.enc}<D:
-/Software/miktex/miktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Software/
-miktex/miktex/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/Software/miktex/mikt
-ex/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Software/miktex/miktex/fonts/ty
-pe1/urw/times/utmb8a.pfb><D:/Software/miktex/miktex/fonts/type1/urw/times/utmbi
-8a.pfb><D:/Software/miktex/miktex/fonts/type1/urw/times/utmr8a.pfb><D:/Software
-/miktex/miktex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on SUNFLOWER.pdf (5 pages, 397019 bytes).
->>>>>>> 5ae4fae554722e686606e120b962abbbce57a1fe:SUNFLOWER.log
+ 41i,8n,25p,1066b,238s stack positions out of 5000i,500n,10000p,200000b,50000s
+{E:/MikTex/fonts/enc/dv
+ips/base/8r.enc}<E:/MikTex/fonts/type1/urw/times/utmb8a.pfb><E:/MikTex/fonts/ty
+pe1/urw/times/utmbi8a.pfb><E:/MikTex/fonts/type1/urw/times/utmr8a.pfb><E:/MikTe
+x/fonts/type1/urw/times/utmri8a.pfb>
+Output written on SUNFLOWER.pdf (5 pages, 370043 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
+ 63 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

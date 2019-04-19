@@ -48,7 +48,10 @@ This work is based on the instruction set architecture RISC-V.\cite{RISCV} RISC-
 
 In this work, we present SUNFLOWER, a RISC-V based TEE implementation with tagged memory applied. This is a hardware-software co-design work. In the hardware level, we add instructions that can load and store data with tag check to the RISC-V simulator spike. In the software level, we provide a secure interface for applications to call and set part of their code or data with trusted tag. We associate each memory word with 2 bits tag, thus achieve fine-grained isolation with low overhead. We estimate our work on a simple encryption program and prove it can work as expected. 
 
+Tag memory technology has been widely proposed earlier for data flow tracking. But those work is often based on logical tags, which simply map to certain regions. Recently, with the development of FPGA, people pay more attention to hardware. More and more designs are based on designs that allow developers to customize, like RISC-V. Our innovation is based on [timeberv], and aim to the more flexible tag strategy and the optimization of the operating system to make it more concise.
+
 This report will introduce our design frame and details of hardware and software design, followed by evaluation and analysis of our work.
+
 
 
 % ====================
@@ -173,7 +176,7 @@ Our project still has many limitations. In one way we have not achieve whole imp
 
 Without MPU control, it is possible for attacker to crack our trusted zone from other process, since we just check the tag not where they belongs. Hence, In the next few days, our team attempts to add MPU protection. And let MPU set different modes with different privileges, in order to defend outside attack. Based on existing achievements that we have found related port in FreeRTOS, it is not difficult to implement it in certain operating system.
 
-What is more, for our current demo, we did not implement to set tag to lower privileges. But this is a little problem, which will be fixed after appending MPU.
+%What is more, for our current demo, we did not implement to set tag to lower privileges. But this is a little problem, which will be fixed after appending MPU.
 
 Furthermore, we try to exploit the most development and utilization of our achievements. A typically example is plug-in. Be as specific as possible, plug-ins are supposed not to be able to touch the main application data or function, which owner want to keep secret. Just as demo shows, if a normal function attempts to access secure data, then the task would break down. Beside this kind of specific plug-ins, written in advance during coding, we would like to achieve the case that users could add any custom plug-ins without any secure problems, which is ideal but realizable.
 
@@ -183,8 +186,7 @@ Furthermore, we try to exploit the most development and utilization of our achie
 % ==================
 
 \section{Conclusion}
-This work shows measured results on two X-Band GaN MMIC ($0.15\,\mu m$ process). High efficiencies (higher than $56\%$) are obtained for both amplification and rectification modes. Rectification is performed in self-synchronous way without any injection on the gate RF port. A passive termination is self-sufficient at microwave frequencies thanks to the Miller effect produced by $C_{gd}$ in the HEMT GaN intrinsic non-linear model.
-
+This project presents a new idea about the trusted system design, from the ISA extension, CPU extension, to operating system design. Realize a simple trusted execution environment that can support the user to dynamically apply for the trusted space.
 
 % ==================
 % # Acknowledgment #
